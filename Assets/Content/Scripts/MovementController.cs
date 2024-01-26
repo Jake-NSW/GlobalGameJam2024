@@ -5,44 +5,40 @@ namespace Jam
 {
     public sealed class MovementController : MonoBehaviour
     {
+        [SerializeField] private float m_Acceleration = 10;
+        [SerializeField] private float m_MaxSpeed = 3;
+        [SerializeField] private float m_Drag = 5;
+
         private Vector3 m_Velocity;
 
         private void Update()
         {
-            var wish = Vector3.zero;
+            var wishDir = Vector3.zero;
             if (Input.GetKey(KeyCode.W))
-            {
-                wish += Vector3.forward;
-            }
+                wishDir += Vector3.forward;
 
             if (Input.GetKey(KeyCode.S))
-            {
-                wish += Vector3.back;
-            }
+                wishDir += Vector3.back;
 
             if (Input.GetKey(KeyCode.A))
-            {
-                wish += Vector3.left;
-            }
+                wishDir += Vector3.left;
 
             if (Input.GetKey(KeyCode.D))
-            {
-                wish += Vector3.right;
-            }
+                wishDir += Vector3.right;
 
-            wish.Normalize();
+            wishDir.Normalize();
 
-            m_Velocity += wish * (Time.deltaTime * 10);
-            if (m_Velocity.magnitude > 3)
+            m_Velocity += wishDir * (Time.deltaTime * m_Acceleration);
+            if (m_Velocity.magnitude > m_MaxSpeed)
             {
-                m_Velocity = m_Velocity.normalized * 3;
+                m_Velocity = m_Velocity.normalized * m_MaxSpeed;
             }
 
             var t = transform;
             var position = t.position;
-            t.position = Vector3.MoveTowards(position, position + m_Velocity, m_Velocity.magnitude * Time.deltaTime);
 
-            m_Velocity -= m_Velocity * (Time.deltaTime * 5);
+            t.position = Vector3.MoveTowards(position, position + m_Velocity, m_Velocity.magnitude * Time.deltaTime);
+            m_Velocity = Vector3.MoveTowards(m_Velocity, Vector3.zero, Time.deltaTime * m_Drag);
         }
     }
 }

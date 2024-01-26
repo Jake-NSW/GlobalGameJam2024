@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a416f44-962d-4cfb-afa3-80f674ceb9c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Content/Scripts/DampTarget.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Content/Scripts/DampTarget.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Content/Scripts/MovementController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Content/Scripts/MovementController.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GlobalGameJam2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GlobalGameJam2024/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/fat_dude/fat_dude.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/fat_dude/fat_dude.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/fat_dude_family_safe/fat_dude_family_safe.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/fat_dude_family_safe/fat_dude_family_safe.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/MovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/MovementController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +105,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1706260466755</updated>
-      <workItem from="1706260468853" duration="3499000" />
+      <workItem from="1706260468853" duration="4468000" />
     </task>
     <servers />
   </component>
