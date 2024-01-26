@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Jam
@@ -9,30 +10,23 @@ namespace Jam
         /// </summary>
         public bool IsFarting => m_IsFarting;
 
-        /// <summary>
-        /// How much fart have we done so far (normalised)
-        /// </summary>
-        public float FartNormal => Mathf.Clamp01(m_SinceFartStart / m_MaxFartDuration);
-
-        /// <summary>
-        /// How long do we have to wait to fart again
-        /// </summary>
-        public float FartWait => Mathf.Clamp01(m_SinceLastFart / m_PostFartWait);
-
         [SerializeField] private float m_Acceleration = 10;
         [SerializeField] private float m_MaxSpeed = 3;
         [SerializeField] private float m_Drag = 5;
 
         [SerializeField] private float m_Fart = 25;
 
-        [SerializeField] private float m_MaxFartDuration = 0.6f;
-        [SerializeField] private float m_PostFartWait = 5;
+        [SerializeField] private float m_FartRegeneration;
+        [SerializeField] private float m_FartRegenerationDelay;
+
+        [SerializeField] private float m_FartDepletion;
+
+        [SerializeField] private float m_MaxFartCapacity = 0.6f;
 
         private Vector3 m_Velocity;
 
         private bool m_IsFarting;
-
-        private TimeSince m_SinceFartStart;
+        private float m_FartCapacity;
         private TimeSince m_SinceLastFart;
 
         private void Start()
@@ -46,21 +40,23 @@ namespace Jam
             // Fart Power
             if (Input.GetKey(KeyCode.Space))
             {
-                // We only want to start farting after two seconds
-                if (!m_IsFarting && m_SinceLastFart < m_PostFartWait)
+                // We only want to start farting if we got the power to do so 
+                if (m_FartCapacity <= 0)
                     return;
 
                 // start fart
                 if (!m_IsFarting)
                 {
-                    m_SinceFartStart = 0;
                     m_SinceLastFart = 0;
                     m_IsFarting = true;
                 }
 
+                // use velocity to go up
                 m_Velocity += Vector3.up * (m_Fart * Time.deltaTime);
+                m_FartCapacity -= Time.deltaTime * m_FartDepletion;
 
-                if (m_SinceFartStart > m_MaxFartDuration)
+                // To much fart, we cant fart anymore
+                if (m_FartCapacity > m_MaxFartCapacity)
                 {
                     m_IsFarting = false;
                     m_SinceLastFart = 0;
@@ -71,8 +67,15 @@ namespace Jam
                 if (m_IsFarting)
                     m_SinceLastFart = 0;
 
+                // regen fart after time
+                if (m_SinceLastFart > m_FartRegenerationDelay)
+                    m_FartCapacity += Time.deltaTime * m_FartRegeneration;
+
                 m_IsFarting = false;
             }
+
+            // Clamp to max fart
+            m_FartCapacity = Math.Min(m_MaxFartCapacity, m_FartCapacity);
         }
 
         private void Update()

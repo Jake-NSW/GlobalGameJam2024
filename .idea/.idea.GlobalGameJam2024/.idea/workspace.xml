@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a416f44-962d-4cfb-afa3-80f674ceb9c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Content/Scripts/TimeSince.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Content/Scripts/TimeSince.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GlobalGameJam2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GlobalGameJam2024/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/MathUtil.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/MathUtil.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/MovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/MovementController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +113,7 @@
       <option name="presentableId" value="Default" />
       <updated>1706260466755</updated>
       <workItem from="1706260468853" duration="8603000" />
-      <workItem from="1706306742612" duration="2439000" />
+      <workItem from="1706306742612" duration="2754000" />
     </task>
     <servers />
   </component>
