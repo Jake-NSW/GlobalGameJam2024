@@ -6,6 +6,7 @@ namespace Jam
     {
         [SerializeField] private float m_Acceleration = 10;
         [SerializeField] private float m_MaxSpeed = 3;
+        [SerializeField] private float m_Fart = 25;
         [SerializeField] private float m_Drag = 5;
 
         private Vector3 m_Velocity;
@@ -25,19 +26,45 @@ namespace Jam
             if (Input.GetKey(KeyCode.D))
                 wishDir += Vector3.right;
 
-            wishDir.Normalize();
-
-            m_Velocity += wishDir * (Time.deltaTime * m_Acceleration);
-            if (m_Velocity.magnitude > m_MaxSpeed)
+            if (Input.GetKey(KeyCode.Space))
             {
-                m_Velocity = m_Velocity.normalized * m_MaxSpeed;
+                m_Velocity.y += m_Fart * Time.deltaTime;
             }
 
+
+            wishDir.Normalize();
+
+            var wishMove = m_Velocity.WithY(0);
+
+            // calculate wish velocity based on speed and direction
+            wishMove += wishDir * (Time.deltaTime * m_Acceleration);
+
+            // Cap wish velocity to max speed
+            if (wishMove.magnitude > m_MaxSpeed)
+                wishMove = wishMove.normalized * m_MaxSpeed;
+
+            // Add wish velocity to current velocity, by using delta
+            m_Velocity += wishMove.WithY(0) - m_Velocity.WithY(0);
+
+            // Apply Gravity
+            m_Velocity += Vector3.up * (Physics.gravity.y * Time.deltaTime);
+            
             var t = transform;
             var position = t.position;
 
             t.position = Vector3.MoveTowards(position, position + m_Velocity, m_Velocity.magnitude * Time.deltaTime);
-            m_Velocity -= m_Velocity * (Time.deltaTime * m_Drag);
+            if (t.position.y < 0)
+            {
+                t.position = t.position.WithY(0);
+                m_Velocity = m_Velocity.WithY(0);
+            }
+
+            m_Velocity -= m_Velocity.WithY(0) * (Time.deltaTime * m_Drag);
+        }
+
+        private bool IsGrounded()
+        {
+            return Physics.Raycast(transform.position, Vector3.down, 1.1f);
         }
     }
 }
