@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Jam
@@ -38,7 +37,7 @@ namespace Jam
             var position = t.position;
 
             t.position = Vector3.MoveTowards(position, position + m_Velocity, m_Velocity.magnitude * Time.deltaTime);
-            m_Velocity = Vector3.MoveTowards(m_Velocity, Vector3.zero, Time.deltaTime * m_Drag);
+            m_Velocity -= m_Velocity * (Time.deltaTime * m_Drag);
         }
     }
 }
