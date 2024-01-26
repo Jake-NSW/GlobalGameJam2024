@@ -780,7 +780,7 @@ MonoBehaviour:
   m_FartRegeneration: 0.5
   m_FartRegenerationDelay: 0.2
   m_FartDepletion: 0.8
-  m_MaxFartCapacity: 2
+  m_MaxFartCapacity: 0.5
 --- !u!4 &1200890005
 Transform:
   m_ObjectHideFlags: 0

@@ -35,6 +35,14 @@ namespace Jam
             m_SinceLastFart = 50;
         }
 
+        private void OnGUI()
+        {
+            GUILayout.Label("Fart Capacity: " + m_FartCapacity);
+            GUILayout.Label("Farting: " + m_IsFarting);
+            GUILayout.Label("Since Last Fart: " + m_SinceLastFart);
+            GUILayout.Label("Velocity: " + m_Velocity);
+        }
+
         private void HandleFartPower()
         {
             // Fart Power
@@ -121,6 +129,15 @@ namespace Jam
             }
 
             m_Velocity -= m_Velocity.WithY(0) * (Time.deltaTime * m_Drag);
+        }
+
+        private void LateUpdate()
+        {
+            // Get direction of velocity
+            var dir = m_Velocity.normalized;
+            
+            // Rotate to direction
+            transform.rotation = Quaternion.LookRotation(dir);
         }
     }
 }
