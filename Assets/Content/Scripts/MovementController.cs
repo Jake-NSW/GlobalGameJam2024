@@ -90,9 +90,6 @@ namespace Jam
         {
             var wishDir = Vector3.zero;
 
-            // Always going forward
-            wishDir += Vector3.forward;
-
             if (Input.GetKey(KeyCode.A))
                 wishDir += Vector3.left;
 
@@ -135,7 +132,8 @@ namespace Jam
         {
             // Get direction of velocity
             var dir = m_Velocity.normalized;
-            
+            dir += Vector3.forward;
+
             // Rotate to direction
             transform.rotation = Quaternion.LookRotation(dir);
         }
