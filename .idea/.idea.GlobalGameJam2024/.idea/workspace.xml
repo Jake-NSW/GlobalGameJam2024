@@ -5,29 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a416f44-962d-4cfb-afa3-80f674ceb9c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Content/Scripts/Pickup.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Content/Scripts/Pickup.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GlobalGameJam2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GlobalGameJam2024/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Example Scenes/Files/Materials/Bend_TwsitedSpiral/SimpleTownLite_Road.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Example Scenes/Files/Materials/Bend_TwsitedSpiral/SimpleTownLite_Road.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Example Scenes/Files/Materials/Bend_TwsitedSpiral/Vehicle_PizzaCar.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Example Scenes/Files/Materials/Bend_TwsitedSpiral/Vehicle_PizzaCar.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/2D.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Lit.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Particles.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/SpeedTree.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Sprites.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Terrain.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/TextMesh Pro v3.0.6.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Unlit.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Brownie Point/base_material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Brownie Point/base_material.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Scenes/main_menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scenes/main_menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/MovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/MovementController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/ChunkSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/ChunkSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CreatePbrMaterialUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CreatePbrMaterialUtility.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RenameUtility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RenameUtility.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/SampleSceneProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/SampleSceneProfile.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Scenes/Level Generation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scenes/Level Generation.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
