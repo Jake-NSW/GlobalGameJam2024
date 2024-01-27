@@ -1,4 +1,3 @@
-using DefaultNamespace;
 using UnityEngine;
 
 /// <summary>
@@ -9,54 +8,42 @@ public class PooStream : MonoBehaviour
     private readonly Vector3 _pooViolenceBoxSize = new Vector3(0.25f, 0.25f, 0.25f);
     [field: SerializeField] public Color PooColor { get; private set; }
     [field: SerializeField, Range(0, 100)] public int PooViolence { get; private set; } = 0;
-    [field:SerializeField, Range(0, 100)] public int PooVelocity { get; private set; } = 100;
     [SerializeField] private Transform[] pooVortexTransforms;
 
     [SerializeField] private bool isVortexShaking = true;
+    private ParticleSystem[] _particleSystems;
 
-    private PooParticle[] _pooParticles;
-    private Vector3 _pooVortexInitialPosition;
-    private Vector3 _pooVortexNextPosition;
+    // Represents how far the poo vortex is from the parent.
+    private Vector3 _pooVortexLocalPositionOffset;
+    private Vector3 _pooVortexNextLocalPosition;
 
-    private bool _isPlayingDebug = false;
+    private void Awake()
+    {
+        _particleSystems = GetComponentsInChildren<ParticleSystem>();
+    }
 
     private void Start()
     {
-        _pooParticles = GetComponentsInChildren<PooParticle>();
-        _pooVortexInitialPosition = pooVortexTransforms[0].position;
-        _pooVortexNextPosition = GetRandomPointInPooBox();
-        _isPlayingDebug = false;
+        _pooVortexLocalPositionOffset = pooVortexTransforms[0].localPosition;
+        _pooVortexNextLocalPosition = GetRandomPointInPooBox();
     }
 
 
     public void UpdateViolence(int violence)
     {
         PooViolence = violence;
-
-        foreach (var pp in _pooParticles)
-        {
-            pp.UpdateViolenceScale(violence);
-        }
     }
     
-    public void UpdateVelocity(int velocity)
-    {
-        PooVelocity = velocity;
-        foreach (var pp in _pooParticles)
-        {
-            pp.UpdateVelocityScale(velocity);
-        }
-    }
 
     public void UpdateColor(Color color)
     {
-        PooColor = color;
-        foreach (var pp in _pooParticles)
-        {
-            pp.UpdateColor(color);
-        }
+        return;
     }
 
+    /// <summary>
+    /// Get a random local position within the poo box.
+    /// </summary>
+    /// <returns></returns>
     private Vector3 GetRandomPointInPooBox()
     {
         
@@ -69,7 +56,7 @@ public class PooStream : MonoBehaviour
             Random.Range(-scaledBounds.z / 2, scaledBounds.z / 2)
         );
 
-        return randomPosition + _pooVortexInitialPosition;
+        return randomPosition + _pooVortexLocalPositionOffset;
     }
 
     private void Update()
@@ -78,26 +65,23 @@ public class PooStream : MonoBehaviour
         
         foreach (var t in pooVortexTransforms)
         {
-            if (Vector3.Distance(t.position, _pooVortexNextPosition) < 0.1f)
+            if (Vector3.Distance(t.localPosition, _pooVortexNextLocalPosition) < 0.1f)
             {
-                _pooVortexNextPosition = GetRandomPointInPooBox();
+                _pooVortexNextLocalPosition = GetRandomPointInPooBox();
             }
-            
             // world position change
-            Transform parent;
-            var worldCurrentPosition = t.position + (parent = t.parent).position;
-            var worldNextPosition = _pooVortexNextPosition + parent.position;
-
-            t.position = Vector3.Lerp(t.position, _pooVortexNextPosition, Time.deltaTime * PooViolence * 0.5f);
+            t.localPosition = Vector3.Lerp(
+                t.localPosition,
+                _pooVortexNextLocalPosition,
+                Time.deltaTime * PooViolence * 0.5f);
         }
     }
 
     private void OnValidate()
     {
-        if(!_isPlayingDebug) return;
-        
+        if (!Application.isPlaying) return;
+        if(_particleSystems == null) return;
         UpdateViolence(PooViolence);
-        UpdateVelocity(PooVelocity);
         UpdateColor(PooColor);
     }
 }
