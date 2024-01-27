@@ -69,7 +69,7 @@ namespace Jam
 
             BoxCollider boxCollider = obj.AddComponent<BoxCollider>();
             boxCollider.center = mesh.bounds.center;
-            boxCollider.size = mesh.bounds.size;
+            boxCollider.size = mesh.bounds.size * 0.8f;
         }
 
         void Update()
