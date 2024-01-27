@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,6 +21,11 @@ namespace Jam
 
             Instance = this;
             DontDestroyOnLoad(gameObject);
+        }
+
+        private void Start()
+        {
+            Reset();
         }
 
         // Scene
@@ -112,7 +118,7 @@ namespace Jam
         /// </summary>
         public float Speed => m_Speed;
 
-        private float m_Speed;
+        private float m_Speed = 1;
 
         public void IncrementSpeed()
         {
