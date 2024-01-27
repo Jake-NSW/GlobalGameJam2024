@@ -221,6 +221,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 4830960817133555857, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: <IsPlaying>k__BackingField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5556169635081217839, guid: bf906904ba1530644a6f9f9e771a627f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4657,7 +4662,7 @@ MonoBehaviour:
   m_SpawnFrequencyInSeconds: 0.5
   m_spawnFailureRate: 0.6
   m_howManyToSpawnAtATime: 3
-  m_autoRotateModel: 0
+  m_autoRotateModel: 1
   StartRotation: {x: 0, y: 90, z: 0}
   m_firstSpawnHeight: 0
   m_chanceOfSecondHeight: 0.1
@@ -6969,7 +6974,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988471015}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2651a4c7e50c3274bb02a1b6c03b054b, type: 3}
   m_Name: 
