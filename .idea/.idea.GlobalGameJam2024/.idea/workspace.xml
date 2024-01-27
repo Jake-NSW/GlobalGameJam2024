@@ -8,7 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GlobalGameJam2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GlobalGameJam2024/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Content/Scenes/Level Generation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scenes/Level Generation.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/ItemSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/ItemSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/MovingItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/MovingItem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +23,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Content/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Content/Scripts/World Gen/ItemSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Content/Scripts/World Gen/MovingItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Content/Scripts/World Gen/MovingPhysicsItem.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="r74gfgjy" />
