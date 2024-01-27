@@ -20,7 +20,7 @@ namespace Jam
 
         public void OnPickup()
         {
-            Debug.Log($"Picking up {m_Type}");
+            Debug.Log($"Picking up {Type}");
 
             switch (Type)
             {
