@@ -28,6 +28,9 @@ namespace Jam
         {
             Reset();
             IsPlaying = false;
+            
+            Application.targetFrameRate = 60;
+            Time.fixedDeltaTime = 0.01667f;
         }
 
         private void OnGUI()

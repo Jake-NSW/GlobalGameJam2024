@@ -35,6 +35,8 @@ namespace Jam
                 yield return null;
             }
 
+            m_Background.alpha = 1;
+
             m_Background.blocksRaycasts = true;
         }
 
@@ -54,6 +56,8 @@ namespace Jam
                 m_Background.alpha = Mathf.Lerp(1, 0, time);
                 yield return null;
             }
+
+            m_Background.alpha = 0;
 
             m_Background.blocksRaycasts = false;
         }
