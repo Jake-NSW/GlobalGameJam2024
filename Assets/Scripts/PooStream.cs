@@ -1,4 +1,7 @@
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 /// <summary>
 /// Controls the visual intensity of the characters poo stream.
@@ -26,6 +29,7 @@ public class PooStream : MonoBehaviour
     {
         _pooVortexLocalPositionOffset = pooVortexTransforms[0].localPosition;
         _pooVortexNextLocalPosition = GetRandomPointInPooBox();
+        UpdateColor(PooColor);
     }
 
 
@@ -37,7 +41,12 @@ public class PooStream : MonoBehaviour
 
     public void UpdateColor(Color color)
     {
-        return;
+        //update the main color of the particle system
+        foreach (var ps in _particleSystems)
+        {
+            var main = ps.main;
+            main.startColor = color;
+        }
     }
 
     /// <summary>
@@ -85,3 +94,21 @@ public class PooStream : MonoBehaviour
         UpdateColor(PooColor);
     }
 }
+
+#if UNITY_EDITOR
+[UnityEditor.CustomEditor(typeof(PooStream))]
+public class PooStreamEditor : UnityEditor.Editor
+{
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+
+        var pooStream = (PooStream) target;
+
+        if (GUILayout.Button("Update Color"))
+        {
+            pooStream.UpdateColor(pooStream.PooColor);
+        }
+    }
+}
+#endif

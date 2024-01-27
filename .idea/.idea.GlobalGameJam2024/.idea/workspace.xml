@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a416f44-962d-4cfb-afa3-80f674ceb9c8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/2D.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Lit.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Particles.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/SpeedTree.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Sprites.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Terrain.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/TextMesh Pro v3.0.6.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Shaders/Packages/Unlit.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/MovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/MovementController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Prefabs/Character Model.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Prefabs/Character Model.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Scenes/model_testing.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scenes/model_testing.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/HSFiles/Materials/TwoSides18.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Hovl Studio/HSFiles/Materials/TwoSides18.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/HSFiles/Materials/poo_water_1.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Hovl Studio/HSFiles/Materials/poo_water_1.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/HSFiles/Materials/poo_water_2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Hovl Studio/HSFiles/Materials/poo_water_2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Hovl Studio/HSFiles/Materials/poo_water_torus.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Hovl Studio/HSFiles/Materials/poo_water_torus.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PooStream.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PooStream.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
