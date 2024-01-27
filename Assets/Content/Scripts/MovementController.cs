@@ -14,6 +14,8 @@ namespace Jam
         [SerializeField] private float m_MaxSpeed = 3;
         [SerializeField] private float m_Drag = 5;
 
+        [SerializeField] private Vector2 m_Sides;
+        
         [SerializeField] private float m_Fart = 25;
 
         [SerializeField] private float m_FartRegeneration;
@@ -131,16 +133,16 @@ namespace Jam
             }
 
             // cant go left or right by an extent
-            if (t.position.z < -6)
+            if (t.position.z < -m_Sides.x)
             {
-                t.position = t.position.WithZ(-6);
+                t.position = t.position.WithZ(-m_Sides.x);
 
                 var velocity = -(m_Velocity.z / 1.5f);
                 m_Velocity.z = velocity;
             }
-            else if (t.position.z > 6)
+            else if (t.position.z > m_Sides.y)
             {
-                t.position = t.position.WithZ(6);
+                t.position = t.position.WithZ(m_Sides.y);
 
                 var velocity = -(m_Velocity.z / 1.5f);
                 m_Velocity.z = velocity;
