@@ -34,7 +34,7 @@ public class MusicManager : MonoBehaviour
         SceneManager.sceneLoaded += SceneLoaded();
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         SceneManager.sceneLoaded -= SceneLoaded();
     }
@@ -126,6 +126,8 @@ public class MusicManager : MonoBehaviour
             Debug.LogError("AudioSource is not assigned in PlayMusic");
             return;
         }
+
+        if (!Application.isPlaying) return;
 
         m_audio.clip = clip;
         m_audio.Play();
