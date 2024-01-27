@@ -33,6 +33,8 @@ namespace Jam
                 case PickupType.Point :
                     Destroy(gameObject);
                     break;
+                case PickupType.Barrier :
+                    break;
                 default :
                     throw new ArgumentOutOfRangeException();
             }
