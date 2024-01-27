@@ -25,7 +25,7 @@ namespace Jam
 
         [SerializeField] private float m_firstSpawnHeight = 2f;
         
-        [SerializeField] private float m_chanceOfSecondHeight 0.5f;
+        [SerializeField] private float m_chanceOfSecondHeight = 0.5f;
         [SerializeField] private float m_secondSpawnHeight = 2;
         
         private float m_deltaTime;
