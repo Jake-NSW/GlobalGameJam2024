@@ -66,7 +66,7 @@ namespace Jam
             m_lastChunk.transform.position = newPos;
             
             
-            if (GameManager.Instance.Remaining < 5 && !m_hasSpawnedFinalChunk)
+            if (GameManager.Instance.Remaining < 10 && !m_hasSpawnedFinalChunk)
             {
                 Debug.Log("Spawn Final Chunk");
                 m_hasSpawnedFinalChunk = true;
