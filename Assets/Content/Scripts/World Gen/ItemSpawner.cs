@@ -81,7 +81,7 @@ namespace Jam
 
         void Update()
         {
-            if (m_stopSpawning) return;
+            if (GameManager.Instance.Remaining < 20) return;
             
             m_deltaTime += Time.deltaTime;
 

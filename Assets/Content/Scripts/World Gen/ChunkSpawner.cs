@@ -18,13 +18,8 @@ namespace Jam
         [SerializeField] private float m_chunkSize = 60;        
         private GameObject m_lastChunk;
 
-        private bool m_spawnFinalChunk = false;
-
-
-        private void SpawnFinalChunk()
-        {
-            m_spawnFinalChunk = true;
-        }
+        private bool m_hasSpawnedFinalChunk = false;
+        
 
         void Awake()
         {
@@ -42,16 +37,7 @@ namespace Jam
             int chunkIndex = 0;
             for (int i = 0; i < initialSpawnCount; i++)
             {
-                GameObject chunk;
-                
-                if (m_spawnFinalChunk)
-                {
-                    chunk = Instantiate(m_endChunk);
-                }
-                else
-                {
-                    chunk = Instantiate(m_chunks[chunkIndex]);
-                }
+                GameObject chunk = Instantiate(m_chunks[chunkIndex]);
                 
                 chunk.SetActive(true);
 
@@ -68,14 +54,34 @@ namespace Jam
         }
         
         
-        public void DestroyChunk(RunnerChunk thisChunk)
+        public void ResetChunk(RunnerChunk thisChunk)
         {
+            MoveDirection = new Vector3(-1, 0, 0);
+            
             Vector3 newPos = m_lastChunk.transform.position;
             
             newPos.x += m_chunkSize;
 
             m_lastChunk = thisChunk.gameObject;
             m_lastChunk.transform.position = newPos;
+            
+            
+            if (GameManager.Instance.Remaining < 10 && !m_hasSpawnedFinalChunk)
+            {
+                Debug.Log("Spawn Final Chunk");
+                m_hasSpawnedFinalChunk = true;
+                
+                GameObject chunk = chunk = Instantiate(m_endChunk);
+                
+                chunk.SetActive(true);
+
+                chunk.GetComponent<RunnerChunk>().spawner = this;
+
+                chunk.transform.localPosition = new Vector3(thisChunk.transform.position.x, -2, transform.position.z);
+
+                m_lastChunk = chunk;
+                Destroy(thisChunk);
+            }
         }
     }
 }
