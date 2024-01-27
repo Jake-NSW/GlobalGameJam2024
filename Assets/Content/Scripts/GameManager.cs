@@ -27,11 +27,18 @@ namespace Jam
         private void Start()
         {
             Reset();
+            IsPlaying = false;
         }
 
         private void OnGUI()
         {
             // top middle
+            if (!IsPlaying)
+            {
+                GUI.Label(new Rect(Screen.width / 2 - 50, 10, 100, 20), $"Not Playing!");
+                return;
+            }
+            
             GUI.Label(new Rect(Screen.width / 2 - 50, 10, 100, 20), $"Points: {Points}");
             GUI.Label(new Rect(Screen.width / 2 - 50, 30, 100, 20), $"Speed: {Speed}");
             GUI.Label(new Rect(Screen.width / 2 - 50, 50, 100, 20), $"Time: {Remaining}");
