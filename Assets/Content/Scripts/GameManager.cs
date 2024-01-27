@@ -34,6 +34,11 @@ namespace Jam
             GUI.Label(new Rect(Screen.width / 2 - 50, 10, 100, 20), $"Points: {Points}");
         }
 
+        private void Update()
+        {
+            PointsUpdateLoop();
+        }
+
         // Scene
 
         /// <summary>
