@@ -7221,7 +7221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_chunkSpawner: {fileID: 1439108163}
   m_curvedWorldController: {fileID: 1988471016}
-  m_pickupType: 3
+  m_pickupType: 2
   m_objects:
   - {fileID: 375798922}
   m_SpawnFrequencyInSeconds: 1.5
