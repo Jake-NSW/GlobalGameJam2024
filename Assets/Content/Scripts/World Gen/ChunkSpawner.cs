@@ -10,7 +10,7 @@ namespace Jam
         public float DestroyZone = 300;
         
         [HideInInspector] public Vector3 MoveDirection = new Vector3(-1, 0, 0);
-        public float MovingSpeed => MovingSpeed * GameManager.Instance.Speed;
+        public float MovingSpeed => m_MovingSpeed * GameManager.Instance.Speed;
         
         public float m_MovingSpeed = 30;
         
