@@ -105,8 +105,7 @@ namespace Jam
         /// <summary>
         /// Are we currently playing the game?
         /// </summary>
-        [field: SerializeField]
-        public bool IsPlaying { get; set; }
+        public bool IsPlaying { get; private set; }
 
         public void AssertPlaying()
         {
