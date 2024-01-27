@@ -40,6 +40,8 @@ namespace Jam
         
         [SerializeField] private int[] m_laneDistances = new int[] {-11, -4, 4, 11};
 
+        private bool m_stopSpawning = false;
+
         private void Awake()
         {
             transform.GetChild(0).gameObject.SetActive(false);
@@ -49,6 +51,11 @@ namespace Jam
                 obj.gameObject.SetActive(true);
                 AddBoxCollider(obj);
             }
+        }
+
+        private void StopSpawning()
+        {
+            m_stopSpawning = true;
         }
 
         private void AddBoxCollider(GameObject obj)
@@ -74,6 +81,8 @@ namespace Jam
 
         void Update()
         {
+            if (m_stopSpawning) return;
+            
             m_deltaTime += Time.deltaTime;
 
             if (m_deltaTime > m_SpawnFrequencyInSeconds)
