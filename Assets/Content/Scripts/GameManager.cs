@@ -33,11 +33,14 @@ namespace Jam
         {
             // top middle
             GUI.Label(new Rect(Screen.width / 2 - 50, 10, 100, 20), $"Points: {Points}");
+            GUI.Label(new Rect(Screen.width / 2 - 50, 30, 100, 20), $"Speed: {Speed}");
+            GUI.Label(new Rect(Screen.width / 2 - 50, 50, 100, 20), $"Time: {Remaining}");
         }
 
         private void Update()
         {
             PointsUpdateLoop();
+            TimerUpdateLoop();
         }
 
         // Scene
@@ -124,6 +127,15 @@ namespace Jam
 
         private TimeSince m_SinceStart;
 
+        private void TimerUpdateLoop()
+        {
+            if (!IsPlaying)
+                return;
+
+            if (Remaining <= 0)
+                WinLevel();
+        }
+
         /// <summary>
         /// Start playing the game, call after intro sequence for each level?
         /// </summary>
@@ -155,6 +167,8 @@ namespace Jam
         /// </summary>
         public void WinLevel()
         {
+            IsPlaying = false;
+
             // Should show an event with some UI instead of this?
             LoadLevelFromIndex(SceneManager.GetActiveScene().buildIndex - k_LevelOffset + 1);
         }
@@ -164,6 +178,8 @@ namespace Jam
         /// </summary>
         public void LooseLevel()
         {
+            IsPlaying = false;
+
             // Do something
         }
 
