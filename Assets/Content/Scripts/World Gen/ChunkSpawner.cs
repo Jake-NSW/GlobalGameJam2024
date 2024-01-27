@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Jam
 {
@@ -9,7 +10,9 @@ namespace Jam
         public float DestroyZone = 300;
         
         [HideInInspector] public Vector3 MoveDirection = new Vector3(-1, 0, 0);
-        public float movingSpeed = 30;
+        public float MovingSpeed => MovingSpeed * GameManager.Instance.Speed;
+        
+        public float m_MovingSpeed = 30;
         
         [SerializeField] private float m_chunkSize = 60;        
         private GameObject m_lastChunk;
@@ -44,6 +47,7 @@ namespace Jam
                     chunkIndex = 0;
             }           
         }
+        
         
         public void DestroyChunk(RunnerChunk thisChunk)
         {
