@@ -12,5 +12,18 @@ namespace Jam
             return vec;
         }
         
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3 WithX(this Vector3 vec, float value)
+        {
+            vec.x = value;
+            return vec;
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector3 WithZ(this Vector3 vec, float value)
+        {
+            vec.z = value;
+            return vec;
+        }
     }
 }
