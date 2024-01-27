@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AmazingAssets.CurvedWorld;
+using AmazingAssets.CurvedWorld.Example;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -11,6 +13,8 @@ namespace Jam
     public class ItemSpawner : MonoBehaviour
     {
         [SerializeField] private ChunkSpawner m_chunkSpawner;
+
+        [SerializeField] private CurvedWorldController m_curvedWorldController;
         
         [SerializeField] private GameObject[] m_objects;
         [SerializeField] private float m_SpawnFrequencyInSeconds = 0.5f;
@@ -19,6 +23,7 @@ namespace Jam
         [SerializeField] private float m_spawnFailureRate = 0.6f;
 
         [SerializeField] private float m_howManyToSpawnAtATime = 3;
+        [SerializeField] private bool m_autoRotateModel = false;
 
         [Space(10)]
         public Vector3 StartRotation = new Vector3(0, 90, 0);
@@ -31,7 +36,17 @@ namespace Jam
         private float m_deltaTime;
         
         [SerializeField] private int[] m_laneDistances = new int[] {-11, -4, 4, 11};
-        
+
+        private void Awake()
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+            
+            foreach(var obj in m_objects)
+            {
+                obj.gameObject.SetActive(true);
+            }
+        }
+
         void Update()
         {
             m_deltaTime += Time.deltaTime;
@@ -50,6 +65,10 @@ namespace Jam
         private async void SpawnObjectsInSequence()
         {
             int zPosition = GetRandomSpecificNumber(); // Cache the Z position for all spawns
+            
+            float selectedHeight;
+            
+            selectedHeight = Random.value < m_chanceOfSecondHeight ? m_secondSpawnHeight : m_firstSpawnHeight;
 
             for (int i = 0; i < m_howManyToSpawnAtATime; i++)
             {
@@ -58,10 +77,24 @@ namespace Jam
                 item.SetActive(true);
 
                 // Use the cached Z position
-                item.transform.position = new Vector3(transform.position.x,m_firstSpawnHeight,transform.position.z) + new Vector3(0, 0, zPosition); 
+                item.transform.position = new Vector3(transform.position.x,selectedHeight ,transform.position.z) + new Vector3(0, 0, zPosition); 
                 item.transform.rotation = Quaternion.Euler(StartRotation);
                 
                 var movingItem = item.AddComponent<MovingItem>();
+                item.AddComponent<Pickup>();
+                var collider = item.AddComponent<MeshCollider>();
+                collider.convex = true;
+                collider.isTrigger = true;
+                var disablecurvedWorld = item.AddComponent<DisableCurvedWorld>();
+                disablecurvedWorld.curvedWorldController = m_curvedWorldController;
+                disablecurvedWorld.zMin = -11;
+                disablecurvedWorld.zMax = 11;
+
+                if (m_autoRotateModel)
+                {
+                    item.AddComponent<AutoRotate>();
+                }
+                
                 movingItem.spawner = m_chunkSpawner;
 
                 await Task.Delay(TimeSpan.FromSeconds(0.1f));

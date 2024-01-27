@@ -17,6 +17,13 @@ namespace Jam
 
         void Awake()
         {
+            transform.GetChild(0).gameObject.SetActive(false);
+            
+            foreach(var obj in m_chunks)
+            {
+                obj.gameObject.SetActive(true);
+            }
+            
             initialSpawnCount = initialSpawnCount > m_chunks.Length ? initialSpawnCount : m_chunks.Length;
 
             int chunkIndex = 0;
@@ -27,7 +34,7 @@ namespace Jam
 
                 chunk.GetComponent<RunnerChunk>().spawner = this;
 
-                chunk.transform.localPosition = new Vector3(i * m_chunkSize, 0, transform.position.z);
+                chunk.transform.localPosition = new Vector3(i * m_chunkSize, -2, transform.position.z);
                 MoveDirection = new Vector3(-1, 0, 0);
                 
 
