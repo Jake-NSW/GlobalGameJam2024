@@ -23,11 +23,16 @@ namespace Jam
 
         [SerializeField] private float m_MaxFartCapacity = 0.6f;
 
+        [SerializeField] private PooStream m_PooController;
+
         private Vector3 m_Velocity;
 
         private bool m_IsFarting;
         private float m_FartCapacity;
         private TimeSince m_SinceLastFart;
+
+        private Vector3 Forward => Vector3.right;
+        public Vector3 Left => Vector3.forward;
 
         private void Start()
         {
@@ -91,10 +96,10 @@ namespace Jam
             var wishDir = Vector3.zero;
 
             if (Input.GetKey(KeyCode.A))
-                wishDir += Vector3.left;
+                wishDir += Left;
 
             if (Input.GetKey(KeyCode.D))
-                wishDir += Vector3.right;
+                wishDir += -Left;
 
             wishDir.Normalize();
 
@@ -126,19 +131,19 @@ namespace Jam
             }
 
             // cant go left or right by an extent
-            if (t.position.x < -6)
+            if (t.position.z < -6)
             {
-                t.position = t.position.WithX(-6);
-                
-                var velocity = -(m_Velocity.x / 1.5f);
-                m_Velocity.x = velocity;
+                t.position = t.position.WithZ(-6);
+
+                var velocity = -(m_Velocity.z / 1.5f);
+                m_Velocity.z = velocity;
             }
-            else if (t.position.x > 6)
+            else if (t.position.z > 6)
             {
-                t.position = t.position.WithX(6);
-                
-                var velocity = -(m_Velocity.x / 1.5f);
-                m_Velocity.x = velocity;
+                t.position = t.position.WithZ(6);
+
+                var velocity = -(m_Velocity.z / 1.5f);
+                m_Velocity.z = velocity;
             }
 
             m_Velocity -= m_Velocity.WithY(0) * (Time.deltaTime * m_Drag);
@@ -146,12 +151,8 @@ namespace Jam
 
         private void LateUpdate()
         {
-            // Get direction of velocity
-            var dir = m_Velocity.normalized;
-            dir += Vector3.forward;
-
-            // Rotate to direction
-            transform.rotation = Quaternion.LookRotation(dir);
+            transform.LookAt(transform.position + (m_Velocity / 4) + Forward * 4);
+            m_PooController.UpdateViolence((int)(m_Velocity.magnitude / m_MaxSpeed * 100));
         }
     }
 }

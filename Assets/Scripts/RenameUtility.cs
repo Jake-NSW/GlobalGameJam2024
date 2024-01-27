@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 public class RenameAssetsWindow : EditorWindow
 {
     private string _searchText = "";
@@ -53,3 +54,4 @@ public class RenameAssetsContextMenu
         RenameAssetsWindow.ShowWindow();
     }
 }
+#endif  
