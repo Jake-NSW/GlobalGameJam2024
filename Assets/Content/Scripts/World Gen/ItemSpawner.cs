@@ -13,32 +13,29 @@ namespace Jam
         [SerializeField] private ChunkSpawner m_chunkSpawner;
         
         [SerializeField] private GameObject[] m_objects;
-        [SerializeField] private float m_spawnRate = 0.2f;
-        [SerializeField] private bool m_SpawnPhysicsItems = false;
+        [SerializeField] private float m_SpawnFrequencyInSeconds = 0.5f;
         
         [Range(0f, 1f)]
-        [SerializeField] private float m_spawnRandomizer = 0.6f;
+        [SerializeField] private float m_spawnFailureRate = 0.6f;
 
         [Space(10)]
-        //public Vector3 positionRandomizer = new Vector3(0, 0, 0);
-        public Vector3 rotation = new Vector3(0, 90, 0);
+        public Vector3 StartRotation = new Vector3(0, 90, 0);
 
-
-        [Space(10)]
-        public Vector3 moveDirection = new Vector3(1, 0, 0);
-        public Vector2 movingSpeed = new Vector2(3, 5);
+        [SerializeField] private float m_spawnHeight = 2f;
         
         private float m_deltaTime;
+        
+        [SerializeField] private int[] m_laneDistances = new int[] {-11, -4, 4, 11};
         
         void Update()
         {
             m_deltaTime += Time.deltaTime;
 
-            if (m_deltaTime > m_spawnRate)
+            if (m_deltaTime > m_SpawnFrequencyInSeconds)
             {
                 m_deltaTime = 0;
 
-                if (Random.value > m_spawnRandomizer)
+                if (Random.value > m_spawnFailureRate)
                 {
                     SpawnObjectsInSequence();
                 }
@@ -56,30 +53,20 @@ namespace Jam
                 item.SetActive(true);
 
                 // Use the cached Z position
-                item.transform.position = transform.position + new Vector3(0, 0, zPosition); 
-                item.transform.rotation = Quaternion.Euler(rotation);
-
-                if (m_SpawnPhysicsItems)
-                {
-                    var movingItem = item.AddComponent<MovingPhysicsItem>();
-                    movingItem.moveDirection = moveDirection;
-                    movingItem.movingSpeed = Random.Range(movingSpeed.x, movingSpeed.y);
-                }
-                else
-                {
-                    var movingItem = item.AddComponent<MovingItem>();
-                    movingItem.spawner = m_chunkSpawner;
-                }
+                item.transform.position = new Vector3(transform.position.x,m_spawnHeight,transform.position.z) + new Vector3(0, 0, zPosition); 
+                item.transform.rotation = Quaternion.Euler(StartRotation);
+                
+                var movingItem = item.AddComponent<MovingItem>();
+                movingItem.spawner = m_chunkSpawner;
 
                 await Task.Delay(TimeSpan.FromSeconds(0.1f));
             }
         }
         
-        int GetRandomSpecificNumber()
+        private int GetRandomSpecificNumber()
         {
-            int[] numbers = new int[] {-10, -5, 5, 10};
-            int index = Random.Range(0, numbers.Length);
-            return numbers[index];
+            int index = Random.Range(0, m_laneDistances.Length);
+            return m_laneDistances[index];
         }
     }
 }

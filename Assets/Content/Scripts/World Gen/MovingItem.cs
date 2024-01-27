@@ -12,7 +12,7 @@ namespace Jam
 
         void Update()
         {
-            transform.Translate(new Vector3(0, 0, -1) * spawner.movingSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(-1, 0, 0), spawner.movingSpeed * Time.deltaTime);
 
             if (transform.position.y < -300)
             {
