@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Jam
 {
     public sealed class MenuFunctionality : MonoBehaviour
-    {
+    { 
         public void PlayGame()
         {
             if (GameManager.Instance == null)
