@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a416f44-962d-4cfb-afa3-80f674ceb9c8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Scripts/TransitionFader.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Content/Scripts/TransitionFader.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GlobalGameJam2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GlobalGameJam2024/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Models/Diner/base_material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Models/Diner/base_material.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Scenes/Level Generation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scenes/Level Generation.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/ChunkSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/ChunkSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/ItemSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/ItemSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Scenes/Gameplay/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scenes/Gameplay/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/Pickup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/Pickup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MenuFunctionality.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/MenuFunctionality.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MenuFunctionality.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/MenuFunctionality.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +124,6 @@
       <workItem from="1706311404884" duration="18000" />
       <workItem from="1706311436806" duration="51000" />
       <workItem from="1706311928947" duration="643000" />
-      <workItem from="1706352369968" duration="3776000" />
     </task>
     <servers />
   </component>
