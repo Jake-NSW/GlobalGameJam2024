@@ -12,11 +12,16 @@ namespace Jam
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent<MovementController>(out _))
+            {
+                Debug.Log("Trigger Enter");
                 OnPickup();
+            }
         }
 
         public void OnPickup()
         {
+            Debug.Log($"Picking up {m_Type}");
+
             switch (m_Type)
             {
                 case PickupType.ToiletPaper :
