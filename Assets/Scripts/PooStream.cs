@@ -11,14 +11,19 @@ public class PooStream : MonoBehaviour
     private readonly Vector3 _pooViolenceBoxSize = new Vector3(0.25f, 0.25f, 0.25f);
     [field: SerializeField] public Color PooColor { get; private set; }
     [field: SerializeField, Range(0, 100)] public int PooViolence { get; private set; } = 0;
+    
+    [SerializeField]private Vector2 pooSizeMinMax = new Vector2(0.5f, 1.5f);
+    [SerializeField] private Vector2 pooVelocityMinMax = new Vector2(1f, 3f);
+    
     [SerializeField] private Transform[] pooVortexTransforms;
-
     [SerializeField] private bool isVortexShaking = true;
     private ParticleSystem[] _particleSystems;
 
     // Represents how far the poo vortex is from the parent.
     private Vector3 _pooVortexLocalPositionOffset;
     private Vector3 _pooVortexNextLocalPosition;
+    
+    private Vector3[] _initialScales;
 
     private void Awake()
     {
@@ -30,12 +35,58 @@ public class PooStream : MonoBehaviour
         _pooVortexLocalPositionOffset = pooVortexTransforms[0].localPosition;
         _pooVortexNextLocalPosition = GetRandomPointInPooBox();
         UpdateColor(PooColor);
+        
+        _initialScales = new Vector3[_particleSystems.Length];
+        for (var i = 0; i < _particleSystems.Length; i++)
+        {
+            _initialScales[i] = _particleSystems[i].transform.localScale;
+        }
     }
 
 
     public void UpdateViolence(int violence)
     {
         PooViolence = violence;
+
+        if (violence <= 0)
+        {
+            foreach (var ps in _particleSystems)
+                ps.Stop();
+            
+            isVortexShaking = false;
+            return;
+        }
+
+
+        foreach (var ps in _particleSystems)
+            ps.Play();
+        isVortexShaking = true;
+        UpdateParticleScale();
+    }
+
+    private void UpdateParticleScale()
+    {
+        var violenceScaleFactor = PooViolence / 100f;
+        var newSize = Vector3.Lerp(
+            _initialScales[0],
+            _initialScales[1],
+            violenceScaleFactor);
+
+        // increase all the particles sizes.
+        for (var i = 0; i < _particleSystems.Length; i++)
+        {
+            _particleSystems[i].transform.localScale = _initialScales[i] * violenceScaleFactor;
+        }
+        
+        
+        var newLength = Mathf.Lerp(pooSizeMinMax.x, pooSizeMinMax.y, violenceScaleFactor);
+        var newLengthVector = new Vector3(1, newLength, 1);
+        
+        foreach (var t in pooVortexTransforms)
+        {
+            var newScale = Vector3.Scale(t.localScale, newLengthVector);
+            t.localScale = newScale;
+        }
     }
     
 
