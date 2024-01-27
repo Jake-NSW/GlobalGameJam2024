@@ -40,6 +40,8 @@ namespace Jam
         
         [SerializeField] private int[] m_laneDistances = new int[] {-11, -4, 4, 11};
 
+        private bool m_stopSpawning = false;
+
         private void Awake()
         {
             transform.GetChild(0).gameObject.SetActive(false);
@@ -47,11 +49,40 @@ namespace Jam
             foreach(var obj in m_objects)
             {
                 obj.gameObject.SetActive(true);
+                AddBoxCollider(obj);
             }
+        }
+
+        private void StopSpawning()
+        {
+            m_stopSpawning = true;
+        }
+
+        private void AddBoxCollider(GameObject obj)
+        {
+            MeshFilter meshFilter = obj.GetComponent<MeshFilter>();
+            if (meshFilter == null)
+            {
+                Debug.LogError("MeshFilter not found on the GameObject. BoxCollider cannot be adjusted.");
+                return;
+            }
+
+            Mesh mesh = meshFilter.sharedMesh;
+            if (mesh == null)
+            {
+                Debug.LogError("Mesh not found on the MeshFilter. BoxCollider cannot be adjusted.");
+                return;
+            }
+
+            BoxCollider boxCollider = obj.AddComponent<BoxCollider>();
+            boxCollider.center = mesh.bounds.center;
+            boxCollider.size = mesh.bounds.size * 0.8f;
         }
 
         void Update()
         {
+            if (GameManager.Instance.Remaining < 15) return;
+            
             m_deltaTime += Time.deltaTime;
 
             if (m_deltaTime > m_SpawnFrequencyInSeconds)
@@ -86,9 +117,6 @@ namespace Jam
                 var movingItem = item.AddComponent<MovingItem>();
                 var pickup = item.AddComponent<Pickup>();
                 pickup.Type = m_pickupType;
-                var collider = item.AddComponent<MeshCollider>();
-                collider.convex = true;
-                collider.isTrigger = true;
                 var disablecurvedWorld = item.AddComponent<DisableCurvedWorld>();
                 disablecurvedWorld.curvedWorldController = m_curvedWorldController;
                 disablecurvedWorld.zMin = -11;

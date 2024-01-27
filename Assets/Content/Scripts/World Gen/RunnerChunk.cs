@@ -17,7 +17,7 @@ namespace Jam
         void FixedUpdate()
         {
             if (transform.position.x < -spawner.DestroyZone)
-                spawner.DestroyChunk(this);
+                spawner.ResetChunk(this);
         }
     }
 }

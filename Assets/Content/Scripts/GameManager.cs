@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace Jam
 {
@@ -20,6 +22,32 @@ namespace Jam
 
             Instance = this;
             DontDestroyOnLoad(gameObject);
+        }
+
+        private void Start()
+        {
+            Reset();
+            IsPlaying = false;
+        }
+
+        private void OnGUI()
+        {
+            // top middle
+            if (!IsPlaying)
+            {
+                GUI.Label(new Rect(Screen.width / 2 - 50, 10, 100, 20), $"Not Playing!");
+                return;
+            }
+            
+            GUI.Label(new Rect(Screen.width / 2 - 50, 10, 100, 20), $"Points: {Points}");
+            GUI.Label(new Rect(Screen.width / 2 - 50, 30, 100, 20), $"Speed: {Speed}");
+            GUI.Label(new Rect(Screen.width / 2 - 50, 50, 100, 20), $"Time: {Remaining}");
+        }
+
+        private void Update()
+        {
+            PointsUpdateLoop();
+            TimerUpdateLoop();
         }
 
         // Scene
@@ -85,45 +113,158 @@ namespace Jam
         // State
 
         /// <summary>
-        /// The current player game object
+        /// Are we currently playing the game?
         /// </summary>
-        public GameObject Player { get; set; }
+        public bool IsPlaying { get; private set; }
+
+        public void AssertPlaying()
+        {
+            if (!IsPlaying)
+                throw new UnityException("Not playing, cannot do this");
+        }
+
+        // Playing
+
+        [SerializeField] private float m_LevelLength = 60;
+
+        /// <summary>
+        /// Remaining time left in the level
+        /// </summary>
+        public float Remaining => m_LevelLength - m_SinceStart;
+
+        private TimeSince m_SinceStart;
+
+        private void TimerUpdateLoop()
+        {
+            if (!IsPlaying)
+                return;
+
+            if (Remaining <= 0)
+                WinLevel();
+        }
+
+        /// <summary>
+        /// Start playing the game, call after intro sequence for each level?
+        /// </summary>
+        public void StartPlaying()
+        {
+            if (IsPlaying)
+                throw new UnityException("Already playing, cannot do this");
+
+            IsPlaying = true;
+
+            // Start Timer
+            m_SinceStart = 0;
+
+            Reset();
+        }
 
         /// <summary>
         /// Resets the game to its default state, ready to be played again
         /// </summary>
         public void Reset()
         {
-            m_Speed = 1;
+            m_Speed = m_MinSpeed;
+            m_Points = 0;
+            m_PointsUpdateTimer = 0;
         }
 
         /// <summary>
         /// Show win state / switch to next level
         /// </summary>
-        public void Win()
+        public void WinLevel()
         {
+            IsPlaying = false;
+
+            // Should show an event with some UI instead of this?
             LoadLevelFromIndex(SceneManager.GetActiveScene().buildIndex - k_LevelOffset + 1);
         }
 
+        /// <summary>
+        /// Show lose state
+        /// </summary>
+        public void LooseLevel()
+        {
+            IsPlaying = false;
+
+            // Do something
+        }
+
         // Points
+
+        /// <summary>
+        /// How many points have been earned
+        /// </summary>
+        public float Points => m_Points;
+
+        private float m_Points;
+
+        [SerializeField] private float m_PointsPerSecond = 1;
+        [SerializeField] private float m_PointsPerFood = 5;
+        [SerializeField] private float m_PointsPerToiletPaper = -10;
+        [SerializeField] private float m_PointsPerBarrier = -25;
+
+        public void PointsFromType(PickupType type)
+        {
+            AssertPlaying();
+
+            m_Points += type switch {
+                PickupType.Food => m_PointsPerFood,
+                PickupType.ToiletPaper => m_PointsPerToiletPaper,
+                PickupType.Barrier => m_PointsPerBarrier,
+                _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+            };
+
+            if (m_Points < 0)
+                m_Points = 0;
+        }
+
+        private TimeSince m_PointsUpdateTimer;
+
+        private void PointsUpdateLoop()
+        {
+            // If not playing, set to nothing (lazy!)
+            if (!IsPlaying)
+                m_PointsUpdateTimer = 0;
+
+            // Add Points every update
+            if (m_PointsUpdateTimer <= 1)
+                return;
+
+            m_Points += m_PointsPerSecond;
+            m_PointsUpdateTimer = 0;
+        }
+
+        // Speed
 
         /// <summary>
         /// The speed of the game, should act as a multiplier
         /// </summary>
         public float Speed => m_Speed;
 
-        private float m_Speed;
+        [SerializeField] private float m_MaxSpeed = 3;
+        [SerializeField] private float m_MinSpeed = 1;
+
+        [SerializeField] private float m_DecrementSpeed = 0.5f;
+        [SerializeField] private float m_IncrementSpeed = 0.1f;
+
+        private float m_Speed = 1;
 
         public void IncrementSpeed()
         {
-            m_Speed += 0.1f;
+            AssertPlaying();
+            m_Speed = Mathf.Clamp(m_Speed + m_IncrementSpeed, m_MinSpeed, m_MaxSpeed);
         }
 
         public void DecrementSpeed()
         {
-            m_Speed += 0.1f;
+            AssertPlaying();
+            m_Speed = Mathf.Clamp(m_Speed - m_DecrementSpeed, m_MinSpeed, m_MaxSpeed);
         }
 
-        private void Update() { }
+        public void ResetSpeed()
+        {
+            m_Speed = m_MinSpeed;
+        }
     }
 }
