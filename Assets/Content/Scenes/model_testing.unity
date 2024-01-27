@@ -20013,6 +20013,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character Model
       objectReference: {fileID: 0}
+    - target: {fileID: 993220988716143836, guid: 76129d3fafff18b44a10633a88778019,
+        type: 3}
+      propertyPath: <PooColor>k__BackingField.b
+      value: 0.052509785
+      objectReference: {fileID: 0}
+    - target: {fileID: 993220988716143836, guid: 76129d3fafff18b44a10633a88778019,
+        type: 3}
+      propertyPath: <PooColor>k__BackingField.g
+      value: 0.13539553
+      objectReference: {fileID: 0}
+    - target: {fileID: 993220988716143836, guid: 76129d3fafff18b44a10633a88778019,
+        type: 3}
+      propertyPath: <PooColor>k__BackingField.r
+      value: 0.18867922
+      objectReference: {fileID: 0}
     - target: {fileID: 1818030397251090611, guid: 76129d3fafff18b44a10633a88778019,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.b

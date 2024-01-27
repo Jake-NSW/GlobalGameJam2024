@@ -8,15 +8,22 @@ using UnityEditor;
 /// </summary>
 public class PooStream : MonoBehaviour
 {
-    private readonly Vector3 _pooViolenceBoxSize = new Vector3(0.25f, 0.25f, 0.25f);
+
+    
     [field: SerializeField] public Color PooColor { get; private set; }
     [field: SerializeField, Range(0, 100)] public int PooViolence { get; private set; } = 0;
     
-    [SerializeField]private Vector2 pooSizeMinMax = new Vector2(0.5f, 1.5f);
-    [SerializeField] private Vector2 pooVelocityMinMax = new Vector2(1f, 3f);
+    [SerializeField, Tooltip("How scaled the particles can be compared to their starting scale")]
+    private Vector2 pooSizeMinMax = new Vector2(0.5f, 1.5f);
+    [SerializeField, Tooltip("How long the vortex particles can be compared to their starting scale")] 
+    private Vector2 pooVelocityMinMax = new Vector2(1f, 3f);
     
+    [Header("Shaking Controls")]
     [SerializeField] private Transform[] pooVortexTransforms;
     [SerializeField] private bool isVortexShaking = true;
+    [SerializeField] private Vector3 pooViolenceBoxSize = new Vector3(0.25f, 0.25f, 0.25f);
+    [SerializeField] private float pooShakingIntensity = 0.5f;
+    
     private ParticleSystem[] _particleSystems;
 
     // Represents how far the poo vortex is from the parent.
@@ -59,7 +66,11 @@ public class PooStream : MonoBehaviour
 
 
         foreach (var ps in _particleSystems)
-            ps.Play();
+        {
+            // only play it if it's not playing
+            if (!ps.isPlaying)
+                ps.Play();
+        }
         isVortexShaking = true;
         UpdateParticleScale();
     }
@@ -108,7 +119,7 @@ public class PooStream : MonoBehaviour
     {
         
         // get a random position within the bounds
-        var scaledBounds = _pooViolenceBoxSize * (PooViolence / 100f);
+        var scaledBounds = pooViolenceBoxSize * (PooViolence / 100f);
 
         var randomPosition = new Vector3(
             Random.Range(-scaledBounds.x / 2, scaledBounds.x / 2),
@@ -133,7 +144,7 @@ public class PooStream : MonoBehaviour
             t.localPosition = Vector3.Lerp(
                 t.localPosition,
                 _pooVortexNextLocalPosition,
-                Time.deltaTime * PooViolence * 0.5f);
+                Time.deltaTime * PooViolence * pooShakingIntensity);
         }
     }
 
