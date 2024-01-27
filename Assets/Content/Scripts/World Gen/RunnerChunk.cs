@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using Jam;
+using UnityEngine;
 
 
-namespace AmazingAssets.CurvedWorld.Example
+namespace Jam
 {
     public class RunnerChunk : MonoBehaviour
     {
@@ -10,12 +11,12 @@ namespace AmazingAssets.CurvedWorld.Example
 
         void Update()
         {
-            transform.Translate(spawner.moveDirection * spawner.movingSpeed * Time.deltaTime);
+            transform.Translate(spawner.MoveDirection * spawner.movingSpeed * Time.deltaTime);
         }
 
         void FixedUpdate()
         {
-            if (transform.position.x < -spawner.destoryZone)
+            if (transform.position.x < -spawner.DestroyZone)
                 spawner.DestroyChunk(this);
         }
     }

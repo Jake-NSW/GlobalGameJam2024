@@ -1,57 +1,53 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 
-namespace AmazingAssets.CurvedWorld.Example
+namespace Jam
 {
     public class ChunkSpawner : MonoBehaviour
     {
-        public enum AXIS { XPositive, XNegative, ZPositive, ZNegative }
-
-        public GameObject[] chunks;
-        public int initialSpawnCount = 5;
-        public float destoryZone = 300;
+        [SerializeField] private GameObject[] m_chunks;
+        public int initialSpawnCount = 15;
+        public float DestroyZone = 300;
         
-
-        [HideInInspector]
-        public Vector3 moveDirection = new Vector3(-1, 0, 0);
-        public float movingSpeed = 1;
-
-
-        public float chunkSize = 60;        
-        GameObject lastChunk;
+        [HideInInspector] public Vector3 MoveDirection = new Vector3(-1, 0, 0);
+        public float movingSpeed = 30;
+        
+        [SerializeField] private float m_chunkSize = 60;        
+        private GameObject m_lastChunk;
 
 
         void Awake()
         {
-            initialSpawnCount = initialSpawnCount > chunks.Length ? initialSpawnCount : chunks.Length;
+            initialSpawnCount = initialSpawnCount > m_chunks.Length ? initialSpawnCount : m_chunks.Length;
 
             int chunkIndex = 0;
             for (int i = 0; i < initialSpawnCount; i++)
             {
-                GameObject chunk = Instantiate(chunks[chunkIndex]);
+                GameObject chunk = Instantiate(m_chunks[chunkIndex]);
                 chunk.SetActive(true);
 
                 chunk.GetComponent<RunnerChunk>().spawner = this;
 
-                chunk.transform.localPosition = new Vector3(i * chunkSize, 0, transform.position.z);
-                moveDirection = new Vector3(-1, 0, 0);
+                chunk.transform.localPosition = new Vector3(i * m_chunkSize, 0, transform.position.z);
+                MoveDirection = new Vector3(-1, 0, 0);
                 
 
-                lastChunk = chunk;
+                m_lastChunk = chunk;
 
-                if (++chunkIndex >= chunks.Length)
+                if (++chunkIndex >= m_chunks.Length)
                     chunkIndex = 0;
             }           
         }
         
         public void DestroyChunk(RunnerChunk thisChunk)
         {
-            Vector3 newPos = lastChunk.transform.position;
+            Vector3 newPos = m_lastChunk.transform.position;
             
-            newPos.x += chunkSize;
+            newPos.x += m_chunkSize;
 
-            lastChunk = thisChunk.gameObject;
-            lastChunk.transform.position = newPos;
+            m_lastChunk = thisChunk.gameObject;
+            m_lastChunk.transform.position = newPos;
         }
     }
 }
