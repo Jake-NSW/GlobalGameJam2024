@@ -1883,7 +1883,7 @@ MonoBehaviour:
   m_SpawnFrequencyInSeconds: 0.5
   m_spawnFailureRate: 0.6
   m_howManyToSpawnAtATime: 1
-  m_autoRotateModel: 0
+  m_autoRotateModel: 1
   StartRotation: {x: 0, y: 90, z: 0}
   m_firstSpawnHeight: 0
   m_chanceOfSecondHeight: 0
