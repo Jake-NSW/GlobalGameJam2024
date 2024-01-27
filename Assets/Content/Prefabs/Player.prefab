@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3417329823560864886}
   - component: {fileID: 2435448078238684461}
+  - component: {fileID: 3366412468893621815}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -49,12 +50,34 @@ MonoBehaviour:
   m_Acceleration: 60
   m_MaxSpeed: 50
   m_Drag: 2
+  m_Sides: {x: 0, y: 0}
   m_Fart: 25
   m_FartRegeneration: 0.5
   m_FartRegenerationDelay: 0.2
   m_FartDepletion: 0.8
   m_MaxFartCapacity: 0.5
   m_PooController: {fileID: 6217471454717045861}
+--- !u!65 &3366412468893621815
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714306582155485299}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4956052530722821547
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +205,7 @@ PrefabInstance:
     - target: {fileID: 7672137962229701928, guid: 76129d3fafff18b44a10633a88778019,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.472
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7672137962229701928, guid: 76129d3fafff18b44a10633a88778019,
         type: 3}
