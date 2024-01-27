@@ -15,6 +15,9 @@ namespace Jam
         [SerializeField] private ChunkSpawner m_chunkSpawner;
 
         [SerializeField] private CurvedWorldController m_curvedWorldController;
+
+        [SerializeField]
+        private PickupType m_pickupType;
         
         [SerializeField] private GameObject[] m_objects;
         [SerializeField] private float m_SpawnFrequencyInSeconds = 0.5f;

@@ -1809,6 +1809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_chunkSpawner: {fileID: 1439108163}
   m_curvedWorldController: {fileID: 1988471016}
+  m_pickupType: 0
   m_objects:
   - {fileID: 1105873514}
   m_SpawnFrequencyInSeconds: 0.5
@@ -4131,7 +4132,7 @@ MonoBehaviour:
   initialSpawnCount: 15
   DestroyZone: 300
   MoveDirection: {x: -1, y: 0, z: 0}
-  movingSpeed: 30
+  m_MovingSpeed: 30
   m_chunkSize: 70
 --- !u!4 &1439108164
 Transform:
@@ -4582,6 +4583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_chunkSpawner: {fileID: 1439108163}
   m_curvedWorldController: {fileID: 1988471016}
+  m_pickupType: 0
   m_objects:
   - {fileID: 913636519}
   m_SpawnFrequencyInSeconds: 0.5
@@ -4718,7 +4720,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1784952224
 Transform:
   m_ObjectHideFlags: 0
@@ -7151,6 +7153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_chunkSpawner: {fileID: 1439108163}
   m_curvedWorldController: {fileID: 1988471016}
+  m_pickupType: 0
   m_objects:
   - {fileID: 375798922}
   m_SpawnFrequencyInSeconds: 1.5
