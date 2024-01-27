@@ -31,19 +31,17 @@ public class MusicManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         
-        SceneManager.sceneLoaded += SceneLoaded();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
     {
-        SceneManager.sceneLoaded -= SceneLoaded();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    private UnityAction<Scene, LoadSceneMode> SceneLoaded()
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (!Application.isPlaying) return null;
-        
-        switch (SceneManager.GetActiveScene().name)
+        switch (scene.name)
         {
             case "MainMenu":
                 PlayMusic(MainMenuSong);
@@ -70,11 +68,9 @@ public class MusicManager : MonoBehaviour
                 PlayMusic(EndCinematicSong);
                 break;
         }
-
-        return null;
     }
 
-    public void FadeOutMusic(float fadeTime = 2f) // Default fade out time is 2 seconds
+    public void FadeOutMusic(float fadeTime = 0.2f) // Default fade out time is 2 seconds
     {
         // Don't Fade out the last cinematic song. Keep it going for the credits
         if (SceneManager.GetActiveScene().name == "EndSceneName")
@@ -115,6 +111,7 @@ public class MusicManager : MonoBehaviour
 
     public void PlayMusic(AudioClip clip)
     {
+        Debug.Log("Play Music Clip: " + clip.name);
         if (clip == null)
         {
             Debug.LogError("No AudioClip provided to PlayMusic");
@@ -131,7 +128,7 @@ public class MusicManager : MonoBehaviour
 
         m_audio.clip = clip;
         m_audio.Play();
-        StartCoroutine(FadeIn(m_audio, 2f)); // 2 seconds fade in
+        StartCoroutine(FadeIn(m_audio, 0.2f)); // 2 seconds fade in
     }
 
     private IEnumerator FadeIn(AudioSource audioSource, float fadeTime)
