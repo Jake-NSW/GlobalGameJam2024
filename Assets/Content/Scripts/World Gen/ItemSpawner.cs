@@ -81,7 +81,7 @@ namespace Jam
 
         void Update()
         {
-            if (GameManager.Instance.Remaining < 20) return;
+            if (GameManager.Instance.Remaining < 15) return;
             
             m_deltaTime += Time.deltaTime;
 
