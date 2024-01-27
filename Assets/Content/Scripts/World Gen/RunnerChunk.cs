@@ -11,7 +11,7 @@ namespace Jam
 
         void Update()
         {
-            transform.Translate(spawner.MoveDirection * spawner.movingSpeed * Time.deltaTime);
+            transform.Translate(spawner.MoveDirection * spawner.MovingSpeed * Time.deltaTime);
         }
 
         void FixedUpdate()
