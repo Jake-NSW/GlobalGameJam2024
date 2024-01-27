@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 
-namespace AmazingAssets.CurvedWorld.Example
+namespace Jam
 {
-    public class RunnerCar : MonoBehaviour
+    public class MovingItem : MonoBehaviour
     {                
         public Vector3 moveDirection = new Vector3(1, 0, 0);    //Set by spawner after instantiating
-        public float movingSpeed = 1;                           //Set by spawner after instantiating
+        public float movingSpeed = 1;   //Set by spawner after instantiating
+        public float ExtraYGravity = -100f;
         
         Rigidbody rigidBody;
 
@@ -19,6 +21,7 @@ namespace AmazingAssets.CurvedWorld.Example
         void FixedUpdate()
         {
             rigidBody.MovePosition(transform.position + moveDirection * movingSpeed * Time.deltaTime * movingSpeed);
+            rigidBody.AddForce(Vector3.up * ExtraYGravity, ForceMode.Force);
 
             if (transform.position.y < -300)
             {
