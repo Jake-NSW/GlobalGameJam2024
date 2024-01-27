@@ -18,11 +18,14 @@ public class PooStream : MonoBehaviour
     private Vector3 _pooVortexInitialPosition;
     private Vector3 _pooVortexNextPosition;
 
+    private bool _isPlayingDebug = false;
+
     private void Start()
     {
         _pooParticles = GetComponentsInChildren<PooParticle>();
         _pooVortexInitialPosition = pooVortexTransforms[0].position;
         _pooVortexNextPosition = GetRandomPointInPooBox();
+        _isPlayingDebug = false;
     }
 
 
@@ -79,8 +82,22 @@ public class PooStream : MonoBehaviour
             {
                 _pooVortexNextPosition = GetRandomPointInPooBox();
             }
+            
+            // world position change
+            Transform parent;
+            var worldCurrentPosition = t.position + (parent = t.parent).position;
+            var worldNextPosition = _pooVortexNextPosition + parent.position;
 
             t.position = Vector3.Lerp(t.position, _pooVortexNextPosition, Time.deltaTime * PooViolence * 0.5f);
         }
+    }
+
+    private void OnValidate()
+    {
+        if(!_isPlayingDebug) return;
+        
+        UpdateViolence(PooViolence);
+        UpdateVelocity(PooVelocity);
+        UpdateColor(PooColor);
     }
 }
