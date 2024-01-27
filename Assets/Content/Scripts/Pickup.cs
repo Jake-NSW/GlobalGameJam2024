@@ -3,10 +3,7 @@ using UnityEngine;
 
 namespace Jam
 {
-    public enum PickupType
-    {
-        None, ToiletPaper, HandSanitizer, Point
-    }
+    public enum PickupType { ToiletPaper, Food, Point }
 
     public sealed class Pickup : MonoBehaviour
     {
@@ -22,14 +19,13 @@ namespace Jam
         {
             switch (m_Type)
             {
-                case PickupType.None :
-                    break;
                 case PickupType.ToiletPaper :
+                    GameManager.Instance.DecrementSpeed();
                     break;
-                case PickupType.HandSanitizer :
+                case PickupType.Food :
+                    GameManager.Instance.IncrementSpeed();
                     break;
                 case PickupType.Point :
-                    GameManager.Instance.Points++;
                     Destroy(gameObject);
                     break;
                 default :
