@@ -15,6 +15,9 @@ namespace Jam
         [SerializeField] private ChunkSpawner m_chunkSpawner;
 
         [SerializeField] private CurvedWorldController m_curvedWorldController;
+
+        [SerializeField]
+        private PickupType m_pickupType;
         
         [SerializeField] private GameObject[] m_objects;
         [SerializeField] private float m_SpawnFrequencyInSeconds = 0.5f;
@@ -81,7 +84,8 @@ namespace Jam
                 item.transform.rotation = Quaternion.Euler(StartRotation);
                 
                 var movingItem = item.AddComponent<MovingItem>();
-                item.AddComponent<Pickup>();
+                var pickup = item.AddComponent<Pickup>();
+                pickup.Type = m_pickupType;
                 var collider = item.AddComponent<MeshCollider>();
                 collider.convex = true;
                 collider.isTrigger = true;
