@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Transition: {fileID: 7047271538274884890}
+  m_MaxSpeed: 3
+  m_MinSpeed: 1
 --- !u!114 &7047271538274884890
 MonoBehaviour:
   m_ObjectHideFlags: 0
