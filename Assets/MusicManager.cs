@@ -41,6 +41,8 @@ public class MusicManager : MonoBehaviour
 
     private UnityAction<Scene, LoadSceneMode> SceneLoaded()
     {
+        if (!Application.isPlaying) return null;
+        
         switch (SceneManager.GetActiveScene().name)
         {
             case "MainMenu":
