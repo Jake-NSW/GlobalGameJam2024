@@ -72,7 +72,7 @@ Material:
     - _BackFresnelEmission: 1
     - _Cutoff: 0.5
     - _Depthpower: 1
-    - _Emission: 1.08
+    - _Emission: 1
     - _Fresnel: 1
     - _FresnelEmission: 1
     - _OnlyNoise: 0
@@ -92,12 +92,12 @@ Material:
     - _Vertexpower: 0.2
     - __dirty: 1
     m_Colors:
-    - _BackFacesColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BackFacesColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
     - _BackFresnelColor: {r: 0.35686278, g: 0.08627448, b: 0.08627448, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DistortionSpeedXYPowerZ: {r: 0, g: 0, b: 0, a: 0}
     - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FrontFacesColor: {r: 0.49056602, g: 0.3595381, b: 0.18280526, a: 1}
+    - _FrontFacesColor: {r: 1, g: 0.87036437, b: 0.7783019, a: 1}
     - _MainTexTiling: {r: 1, g: 1, b: 0, a: -0.01}
     - _NoiseTiling: {r: 8, g: 6, b: 0, a: 0}
     - _SpeedMainTexUVNoiseZW: {r: 0, g: 0, b: 0, a: -2}

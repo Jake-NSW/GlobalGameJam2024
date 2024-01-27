@@ -1,31 +1,53 @@
-using DefaultNamespace;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 /// <summary>
 /// Controls the visual intensity of the characters poo stream.
 /// </summary>
 public class PooStream : MonoBehaviour
 {
-    private readonly Vector3 _pooViolenceBoxSize = new Vector3(0.25f, 0.25f, 0.25f);
+
+    
     [field: SerializeField] public Color PooColor { get; private set; }
     [field: SerializeField, Range(0, 100)] public int PooViolence { get; private set; } = 0;
-    [field:SerializeField, Range(0, 100)] public int PooVelocity { get; private set; } = 100;
+    
+    [SerializeField, Tooltip("How scaled the particles can be compared to their starting scale")]
+    private Vector2 pooSizeMinMax = new Vector2(0.5f, 1.5f);
+    [SerializeField, Tooltip("How long the vortex particles can be compared to their starting scale")] 
+    private Vector2 pooVelocityMinMax = new Vector2(1f, 3f);
+    
+    [Header("Shaking Controls")]
     [SerializeField] private Transform[] pooVortexTransforms;
-
     [SerializeField] private bool isVortexShaking = true;
+    [SerializeField] private Vector3 pooViolenceBoxSize = new Vector3(0.25f, 0.25f, 0.25f);
+    [SerializeField] private float pooShakingIntensity = 0.5f;
+    
+    private ParticleSystem[] _particleSystems;
 
-    private PooParticle[] _pooParticles;
-    private Vector3 _pooVortexInitialPosition;
-    private Vector3 _pooVortexNextPosition;
+    // Represents how far the poo vortex is from the parent.
+    private Vector3 _pooVortexLocalPositionOffset;
+    private Vector3 _pooVortexNextLocalPosition;
+    
+    private Vector3[] _initialScales;
 
-    private bool _isPlayingDebug = false;
+    private void Awake()
+    {
+        _particleSystems = GetComponentsInChildren<ParticleSystem>();
+    }
 
     private void Start()
     {
-        _pooParticles = GetComponentsInChildren<PooParticle>();
-        _pooVortexInitialPosition = pooVortexTransforms[0].position;
-        _pooVortexNextPosition = GetRandomPointInPooBox();
-        _isPlayingDebug = false;
+        _pooVortexLocalPositionOffset = pooVortexTransforms[0].localPosition;
+        _pooVortexNextLocalPosition = GetRandomPointInPooBox();
+        UpdateColor(PooColor);
+        
+        _initialScales = new Vector3[_particleSystems.Length];
+        for (var i = 0; i < _particleSystems.Length; i++)
+        {
+            _initialScales[i] = _particleSystems[i].transform.localScale;
+        }
     }
 
 
@@ -33,35 +55,71 @@ public class PooStream : MonoBehaviour
     {
         PooViolence = violence;
 
-        foreach (var pp in _pooParticles)
+        if (violence <= 0)
         {
-            pp.UpdateViolenceScale(violence);
+            foreach (var ps in _particleSystems)
+                ps.Stop();
+            
+            isVortexShaking = false;
+            return;
+        }
+
+
+        foreach (var ps in _particleSystems)
+        {
+            // only play it if it's not playing
+            if (!ps.isPlaying)
+                ps.Play();
+        }
+        isVortexShaking = true;
+        UpdateParticleScale();
+    }
+
+    private void UpdateParticleScale()
+    {
+        var violenceScaleFactor = PooViolence / 100f;
+        var newSize = Vector3.Lerp(
+            _initialScales[0],
+            _initialScales[1],
+            violenceScaleFactor);
+
+        // increase all the particles sizes.
+        for (var i = 0; i < _particleSystems.Length; i++)
+        {
+            _particleSystems[i].transform.localScale = _initialScales[i] * violenceScaleFactor;
+        }
+        
+        
+        var newLength = Mathf.Lerp(pooSizeMinMax.x, pooSizeMinMax.y, violenceScaleFactor);
+        var newLengthVector = new Vector3(1, newLength, 1);
+        
+        foreach (var t in pooVortexTransforms)
+        {
+            var newScale = Vector3.Scale(t.localScale, newLengthVector);
+            t.localScale = newScale;
         }
     }
     
-    public void UpdateVelocity(int velocity)
-    {
-        PooVelocity = velocity;
-        foreach (var pp in _pooParticles)
-        {
-            pp.UpdateVelocityScale(velocity);
-        }
-    }
 
     public void UpdateColor(Color color)
     {
-        PooColor = color;
-        foreach (var pp in _pooParticles)
+        //update the main color of the particle system
+        foreach (var ps in _particleSystems)
         {
-            pp.UpdateColor(color);
+            var main = ps.main;
+            main.startColor = color;
         }
     }
 
+    /// <summary>
+    /// Get a random local position within the poo box.
+    /// </summary>
+    /// <returns></returns>
     private Vector3 GetRandomPointInPooBox()
     {
         
         // get a random position within the bounds
-        var scaledBounds = _pooViolenceBoxSize * (PooViolence / 100f);
+        var scaledBounds = pooViolenceBoxSize * (PooViolence / 100f);
 
         var randomPosition = new Vector3(
             Random.Range(-scaledBounds.x / 2, scaledBounds.x / 2),
@@ -69,7 +127,7 @@ public class PooStream : MonoBehaviour
             Random.Range(-scaledBounds.z / 2, scaledBounds.z / 2)
         );
 
-        return randomPosition + _pooVortexInitialPosition;
+        return randomPosition + _pooVortexLocalPositionOffset;
     }
 
     private void Update()
@@ -78,26 +136,41 @@ public class PooStream : MonoBehaviour
         
         foreach (var t in pooVortexTransforms)
         {
-            if (Vector3.Distance(t.position, _pooVortexNextPosition) < 0.1f)
+            if (Vector3.Distance(t.localPosition, _pooVortexNextLocalPosition) < 0.1f)
             {
-                _pooVortexNextPosition = GetRandomPointInPooBox();
+                _pooVortexNextLocalPosition = GetRandomPointInPooBox();
             }
-            
             // world position change
-            Transform parent;
-            var worldCurrentPosition = t.position + (parent = t.parent).position;
-            var worldNextPosition = _pooVortexNextPosition + parent.position;
-
-            t.position = Vector3.Lerp(t.position, _pooVortexNextPosition, Time.deltaTime * PooViolence * 0.5f);
+            t.localPosition = Vector3.Lerp(
+                t.localPosition,
+                _pooVortexNextLocalPosition,
+                Time.deltaTime * PooViolence * pooShakingIntensity);
         }
     }
 
     private void OnValidate()
     {
-        if(!_isPlayingDebug) return;
-        
+        if (!Application.isPlaying) return;
+        if(_particleSystems == null) return;
         UpdateViolence(PooViolence);
-        UpdateVelocity(PooVelocity);
         UpdateColor(PooColor);
     }
 }
+
+#if UNITY_EDITOR
+[UnityEditor.CustomEditor(typeof(PooStream))]
+public class PooStreamEditor : UnityEditor.Editor
+{
+    public override void OnInspectorGUI()
+    {
+        base.OnInspectorGUI();
+
+        var pooStream = (PooStream) target;
+
+        if (GUILayout.Button("Update Color"))
+        {
+            pooStream.UpdateColor(pooStream.PooColor);
+        }
+    }
+}
+#endif
