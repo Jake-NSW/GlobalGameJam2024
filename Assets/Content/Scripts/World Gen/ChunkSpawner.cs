@@ -6,6 +6,7 @@ namespace Jam
     public class ChunkSpawner : MonoBehaviour
     {
         [SerializeField] private GameObject[] m_chunks;
+        [SerializeField] private GameObject m_endChunk;
         public int initialSpawnCount = 15;
         public float DestroyZone = 300;
         
@@ -17,6 +18,13 @@ namespace Jam
         [SerializeField] private float m_chunkSize = 60;        
         private GameObject m_lastChunk;
 
+        private bool m_spawnFinalChunk = false;
+
+
+        private void SpawnFinalChunk()
+        {
+            m_spawnFinalChunk = true;
+        }
 
         void Awake()
         {
@@ -26,20 +34,31 @@ namespace Jam
             {
                 obj.gameObject.SetActive(true);
             }
+
+            m_endChunk.SetActive(false);
             
             initialSpawnCount = initialSpawnCount > m_chunks.Length ? initialSpawnCount : m_chunks.Length;
 
             int chunkIndex = 0;
             for (int i = 0; i < initialSpawnCount; i++)
             {
-                GameObject chunk = Instantiate(m_chunks[chunkIndex]);
+                GameObject chunk;
+                
+                if (m_spawnFinalChunk)
+                {
+                    chunk = Instantiate(m_endChunk);
+                }
+                else
+                {
+                    chunk = Instantiate(m_chunks[chunkIndex]);
+                }
+                
                 chunk.SetActive(true);
 
                 chunk.GetComponent<RunnerChunk>().spawner = this;
 
                 chunk.transform.localPosition = new Vector3(i * m_chunkSize, -2, transform.position.z);
                 MoveDirection = new Vector3(-1, 0, 0);
-                
 
                 m_lastChunk = chunk;
 
