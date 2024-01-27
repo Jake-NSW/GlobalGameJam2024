@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Jam
 {
-    public enum PickupType { ToiletPaper, Food, Barrier }
+    public enum PickupType { ToiletPaper, Food, Barrier, EndToilet }
 
     public sealed class Pickup : MonoBehaviour
     {
@@ -32,6 +32,9 @@ namespace Jam
                     break;
                 case PickupType.Barrier :
                     GameManager.Instance.ResetSpeed();
+                    break;
+                case PickupType.EndToilet  :
+                    GameManager.Instance.WinLevel();
                     break;
                 default :
                     throw new ArgumentOutOfRangeException();

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace Jam
 {
@@ -46,7 +47,6 @@ namespace Jam
         /// </summary>
         public void LoadCredits()
         {
-            IsPlaying = false;
             StartCoroutine(LoadSceneWithTransition(1));
         }
 
@@ -55,7 +55,6 @@ namespace Jam
         /// </summary>
         public void LoadMainMenu()
         {
-            IsPlaying = false;
             StartCoroutine(LoadSceneWithTransition(0));
         }
 
@@ -67,7 +66,6 @@ namespace Jam
         /// </summary>
         public void LoadLevelFromIndex(int index)
         {
-            IsPlaying = true;
             StartCoroutine(LoadSceneWithTransition(index + k_LevelOffset));
         }
 
@@ -116,6 +114,33 @@ namespace Jam
                 throw new UnityException("Not playing, cannot do this");
         }
 
+        // Playing
+
+        [SerializeField] private float m_LevelLength = 60;
+
+        /// <summary>
+        /// Remaining time left in the level
+        /// </summary>
+        public float Remaining => m_LevelLength - m_SinceStart;
+
+        private TimeSince m_SinceStart;
+
+        /// <summary>
+        /// Start playing the game, call after intro sequence for each level?
+        /// </summary>
+        public void StartPlaying()
+        {
+            if (!IsPlaying)
+                throw new UnityException("Already playing, cannot do this");
+
+            IsPlaying = true;
+
+            // Start Timer
+            m_SinceStart = 0;
+
+            Reset();
+        }
+
         /// <summary>
         /// Resets the game to its default state, ready to be played again
         /// </summary>
@@ -129,9 +154,18 @@ namespace Jam
         /// <summary>
         /// Show win state / switch to next level
         /// </summary>
-        public void Win()
+        public void WinLevel()
         {
+            // Should show an event with some UI instead of this?
             LoadLevelFromIndex(SceneManager.GetActiveScene().buildIndex - k_LevelOffset + 1);
+        }
+
+        /// <summary>
+        /// Show lose state
+        /// </summary>
+        public void LooseLevel()
+        {
+            // Do something
         }
 
         // Points
@@ -158,7 +192,7 @@ namespace Jam
                 PickupType.Barrier => m_PointsPerBarrier,
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };
-            
+
             if (m_Points < 0)
                 m_Points = 0;
         }
