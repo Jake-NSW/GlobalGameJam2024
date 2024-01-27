@@ -125,6 +125,22 @@ namespace Jam
                 m_Velocity = m_Velocity.WithY(0);
             }
 
+            // cant go left or right by an extent
+            if (t.position.x < -6)
+            {
+                t.position = t.position.WithX(-6);
+                
+                var velocity = -(m_Velocity.x / 1.5f);
+                m_Velocity.x = velocity;
+            }
+            else if (t.position.x > 6)
+            {
+                t.position = t.position.WithX(6);
+                
+                var velocity = -(m_Velocity.x / 1.5f);
+                m_Velocity.x = velocity;
+            }
+
             m_Velocity -= m_Velocity.WithY(0) * (Time.deltaTime * m_Drag);
         }
 
