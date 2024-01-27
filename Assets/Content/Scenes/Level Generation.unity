@@ -949,6 +949,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &192991767 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2a3487d094e8d473d8a141a801e017aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 563917546}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &208485901
 GameObject:
   m_ObjectHideFlags: 0
@@ -2298,6 +2304,94 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512332542}
   m_Mesh: {fileID: -11449426963737289, guid: 9054c70a5c9ed454f8ef48a11963db28, type: 3}
+--- !u!1001 &563917546
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1808687989}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 2a3487d094e8d473d8a141a801e017aa,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a3487d094e8d473d8a141a801e017aa,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a3487d094e8d473d8a141a801e017aa,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a3487d094e8d473d8a141a801e017aa,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.7
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a3487d094e8d473d8a141a801e017aa,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a3487d094e8d473d8a141a801e017aa,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 36.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a3487d094e8d473d8a141a801e017aa,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70457226
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a3487d094e8d473d8a141a801e017aa,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a3487d094e8d473d8a141a801e017aa,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7096322
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a3487d094e8d473d8a141a801e017aa,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a3487d094e8d473d8a141a801e017aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a3487d094e8d473d8a141a801e017aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.41
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a3487d094e8d473d8a141a801e017aa,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a3487d094e8d473d8a141a801e017aa,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2a3487d094e8d473d8a141a801e017aa,
+        type: 3}
+      propertyPath: m_Name
+      value: 579c08c8823a_Run_down_truckstop_
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a3487d094e8d473d8a141a801e017aa, type: 3}
 --- !u!1 &623029261
 GameObject:
   m_ObjectHideFlags: 0
@@ -5920,6 +6014,7 @@ MonoBehaviour:
   - {fileID: 2093361668}
   m_SpawnFrequencyInSeconds: 0.5
   m_spawnFailureRate: 0.6
+  m_howManyToSpawnAtATime: 3
   StartRotation: {x: 0, y: 90, z: 0}
   m_spawnHeight: 2
   m_laneDistances: f5fffffffcffffff040000000b000000
@@ -6422,6 +6517,7 @@ Transform:
   - {fileID: 688376892}
   - {fileID: 1178017920}
   - {fileID: 1833401892}
+  - {fileID: 192991767}
   m_Father: {fileID: 1784952224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1808691675
