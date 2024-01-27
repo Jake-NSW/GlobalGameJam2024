@@ -129,7 +129,7 @@ namespace Jam
         /// </summary>
         public void StartPlaying()
         {
-            if (!IsPlaying)
+            if (IsPlaying)
                 throw new UnityException("Already playing, cannot do this");
 
             IsPlaying = true;
