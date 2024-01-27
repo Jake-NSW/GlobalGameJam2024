@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Jam
 {
@@ -9,7 +10,9 @@ namespace Jam
         public float DestroyZone = 300;
         
         [HideInInspector] public Vector3 MoveDirection = new Vector3(-1, 0, 0);
-        public float movingSpeed = 30;
+        public float MovingSpeed => m_MovingSpeed * GameManager.Instance.Speed;
+        
+        public float m_MovingSpeed = 30;
         
         [SerializeField] private float m_chunkSize = 60;        
         private GameObject m_lastChunk;
@@ -17,6 +20,13 @@ namespace Jam
 
         void Awake()
         {
+            transform.GetChild(0).gameObject.SetActive(false);
+            
+            foreach(var obj in m_chunks)
+            {
+                obj.gameObject.SetActive(true);
+            }
+            
             initialSpawnCount = initialSpawnCount > m_chunks.Length ? initialSpawnCount : m_chunks.Length;
 
             int chunkIndex = 0;
@@ -27,7 +37,7 @@ namespace Jam
 
                 chunk.GetComponent<RunnerChunk>().spawner = this;
 
-                chunk.transform.localPosition = new Vector3(i * m_chunkSize, 0, transform.position.z);
+                chunk.transform.localPosition = new Vector3(i * m_chunkSize, -2, transform.position.z);
                 MoveDirection = new Vector3(-1, 0, 0);
                 
 
@@ -37,6 +47,7 @@ namespace Jam
                     chunkIndex = 0;
             }           
         }
+        
         
         public void DestroyChunk(RunnerChunk thisChunk)
         {

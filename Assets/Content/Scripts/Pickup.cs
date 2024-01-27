@@ -3,21 +3,26 @@ using UnityEngine;
 
 namespace Jam
 {
-    public enum PickupType { ToiletPaper, Food, Point }
+    public enum PickupType { ToiletPaper, Food, Point, Barrier }
 
     public sealed class Pickup : MonoBehaviour
     {
-        [SerializeField] private PickupType m_Type;
+        public PickupType Type;
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent<MovementController>(out _))
+            {
+                Debug.Log("Trigger Enter");
                 OnPickup();
+            }
         }
 
         public void OnPickup()
         {
-            switch (m_Type)
+            Debug.Log($"Picking up {Type}");
+
+            switch (Type)
             {
                 case PickupType.ToiletPaper :
                     GameManager.Instance.DecrementSpeed();
