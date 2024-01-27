@@ -47,7 +47,29 @@ namespace Jam
             foreach(var obj in m_objects)
             {
                 obj.gameObject.SetActive(true);
+                AddBoxCollider(obj);
             }
+        }
+
+        private void AddBoxCollider(GameObject obj)
+        {
+            MeshFilter meshFilter = obj.GetComponent<MeshFilter>();
+            if (meshFilter == null)
+            {
+                Debug.LogError("MeshFilter not found on the GameObject. BoxCollider cannot be adjusted.");
+                return;
+            }
+
+            Mesh mesh = meshFilter.sharedMesh;
+            if (mesh == null)
+            {
+                Debug.LogError("Mesh not found on the MeshFilter. BoxCollider cannot be adjusted.");
+                return;
+            }
+
+            BoxCollider boxCollider = obj.AddComponent<BoxCollider>();
+            boxCollider.center = mesh.bounds.center;
+            boxCollider.size = mesh.bounds.size;
         }
 
         void Update()
@@ -86,9 +108,6 @@ namespace Jam
                 var movingItem = item.AddComponent<MovingItem>();
                 var pickup = item.AddComponent<Pickup>();
                 pickup.Type = m_pickupType;
-                var collider = item.AddComponent<MeshCollider>();
-                collider.convex = true;
-                collider.isTrigger = true;
                 var disablecurvedWorld = item.AddComponent<DisableCurvedWorld>();
                 disablecurvedWorld.curvedWorldController = m_curvedWorldController;
                 disablecurvedWorld.zMin = -11;
