@@ -101,6 +101,8 @@ namespace Jam
 
         private IEnumerator LoadSceneWithTransition(int index)
         {
+            MusicManager.Instance.FadeOutMusic();
+            
             yield return m_Transition.ShowTransition();
 
 
