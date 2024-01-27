@@ -84,7 +84,8 @@ namespace Jam
                 item.transform.rotation = Quaternion.Euler(StartRotation);
                 
                 var movingItem = item.AddComponent<MovingItem>();
-                item.AddComponent<Pickup>();
+                var pickup = item.AddComponent<Pickup>();
+                pickup.Type = m_pickupType;
                 var collider = item.AddComponent<MeshCollider>();
                 collider.convex = true;
                 collider.isTrigger = true;

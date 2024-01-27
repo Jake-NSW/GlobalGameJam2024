@@ -1,13 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Jam
 {
-    public enum PickupType { ToiletPaper, Food, Point }
+    public enum PickupType { ToiletPaper, Food, Point, Barrier }
 
     public sealed class Pickup : MonoBehaviour
     {
-        [SerializeField] private PickupType m_Type;
+        public PickupType Type;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -17,7 +18,7 @@ namespace Jam
 
         public void OnPickup()
         {
-            switch (m_Type)
+            switch (Type)
             {
                 case PickupType.ToiletPaper :
                     GameManager.Instance.DecrementSpeed();
