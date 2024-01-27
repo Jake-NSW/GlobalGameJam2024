@@ -28,6 +28,17 @@ namespace Jam
             Reset();
         }
 
+        private void OnGUI()
+        {
+            // top middle
+            GUI.Label(new Rect(Screen.width / 2 - 50, 10, 100, 20), $"Points: {Points}");
+        }
+
+        private void Update()
+        {
+            PointsUpdateLoop();
+        }
+
         // Scene
 
         /// <summary>
@@ -35,6 +46,7 @@ namespace Jam
         /// </summary>
         public void LoadCredits()
         {
+            IsPlaying = false;
             StartCoroutine(LoadSceneWithTransition(1));
         }
 
@@ -43,6 +55,7 @@ namespace Jam
         /// </summary>
         public void LoadMainMenu()
         {
+            IsPlaying = false;
             StartCoroutine(LoadSceneWithTransition(0));
         }
 
@@ -54,6 +67,7 @@ namespace Jam
         /// </summary>
         public void LoadLevelFromIndex(int index)
         {
+            IsPlaying = true;
             StartCoroutine(LoadSceneWithTransition(index + k_LevelOffset));
         }
 
@@ -91,16 +105,25 @@ namespace Jam
         // State
 
         /// <summary>
-        /// The current player game object
+        /// Are we currently playing the game?
         /// </summary>
-        public GameObject Player { get; set; }
+        [field: SerializeField]
+        public bool IsPlaying { get; set; }
+
+        public void AssertPlaying()
+        {
+            if (!IsPlaying)
+                throw new UnityException("Not playing, cannot do this");
+        }
 
         /// <summary>
         /// Resets the game to its default state, ready to be played again
         /// </summary>
         public void Reset()
         {
-            m_Speed = 1;
+            m_Speed = m_MinSpeed;
+            m_Points = 0;
+            m_PointsUpdateTimer = 0;
         }
 
         /// <summary>
@@ -114,22 +137,78 @@ namespace Jam
         // Points
 
         /// <summary>
+        /// How many points have been earned
+        /// </summary>
+        public float Points => m_Points;
+
+        private float m_Points;
+
+        [SerializeField] private float m_PointsPerSecond = 1;
+        [SerializeField] private float m_PointsPerFood = 5;
+        [SerializeField] private float m_PointsPerToiletPaper = -10;
+        [SerializeField] private float m_PointsPerBarrier = -25;
+
+        public void PointsFromType(PickupType type)
+        {
+            AssertPlaying();
+
+            m_Points += type switch {
+                PickupType.Food => m_PointsPerFood,
+                PickupType.ToiletPaper => m_PointsPerToiletPaper,
+                PickupType.Barrier => m_PointsPerBarrier,
+                _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
+            };
+            
+            if (m_Points < 0)
+                m_Points = 0;
+        }
+
+        private TimeSince m_PointsUpdateTimer;
+
+        private void PointsUpdateLoop()
+        {
+            // If not playing, set to nothing (lazy!)
+            if (!IsPlaying)
+                m_PointsUpdateTimer = 0;
+
+            // Add Points every update
+            if (m_PointsUpdateTimer <= 1)
+                return;
+
+            m_Points += m_PointsPerSecond;
+            m_PointsUpdateTimer = 0;
+        }
+
+        // Speed
+
+        /// <summary>
         /// The speed of the game, should act as a multiplier
         /// </summary>
         public float Speed => m_Speed;
+
+        [SerializeField] private float m_MaxSpeed = 3;
+        [SerializeField] private float m_MinSpeed = 1;
+
+        [SerializeField] private float m_DecrementSpeed = 0.5f;
+        [SerializeField] private float m_IncrementSpeed = 0.1f;
 
         private float m_Speed = 1;
 
         public void IncrementSpeed()
         {
-            m_Speed += 0.1f;
+            AssertPlaying();
+            m_Speed = Mathf.Clamp(m_Speed + m_IncrementSpeed, m_MinSpeed, m_MaxSpeed);
         }
 
         public void DecrementSpeed()
         {
-            m_Speed += 0.1f;
+            AssertPlaying();
+            m_Speed = Mathf.Clamp(m_Speed - m_DecrementSpeed, m_MinSpeed, m_MaxSpeed);
         }
 
-        private void Update() { }
+        public void ResetSpeed()
+        {
+            m_Speed = m_MinSpeed;
+        }
     }
 }

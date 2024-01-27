@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Jam
 {
-    public enum PickupType { ToiletPaper, Food, Point, Barrier }
+    public enum PickupType { ToiletPaper, Food, Barrier }
 
     public sealed class Pickup : MonoBehaviour
     {
@@ -30,12 +30,16 @@ namespace Jam
                 case PickupType.Food :
                     GameManager.Instance.IncrementSpeed();
                     break;
-                case PickupType.Point :
-                    Destroy(gameObject);
+                case PickupType.Barrier :
+                    GameManager.Instance.ResetSpeed();
                     break;
                 default :
                     throw new ArgumentOutOfRangeException();
             }
+
+            Destroy(gameObject);
+            GameManager.Instance.PointsFromType(Type);
+            // Play Particle and Sound?
         }
     }
 }
