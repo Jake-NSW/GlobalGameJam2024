@@ -13,7 +13,7 @@ namespace Jam
         [SerializeField] private float m_spawnRandomizer = 0.6f;
 
         [Space(10)]
-        public Vector3 positionRandomizer = new Vector3(0, 0, 0);
+        //public Vector3 positionRandomizer = new Vector3(0, 0, 0);
         public Vector3 rotation = new Vector3(0, 90, 0);
 
 
@@ -35,17 +35,24 @@ namespace Jam
                 {
                     int index = Random.Range(0, m_objects.Length);
 
-                    GameObject carObject = Instantiate(m_objects[index]);
-                    carObject.SetActive(true);
+                    GameObject item = Instantiate(m_objects[index]);
+                    item.SetActive(true);
 
-                    carObject.transform.position = transform.position + Vector3.Scale(Random.insideUnitSphere, positionRandomizer);
-                    carObject.transform.rotation = Quaternion.Euler(rotation);
+                    item.transform.position = transform.position + new Vector3(0, 0, GetRandomSpecificNumber());
+                    item.transform.rotation = Quaternion.Euler(rotation);
 
-                    MovingItem objectScipt = carObject.GetComponent<MovingItem>();
+                    MovingItem objectScipt = item.GetComponent<MovingItem>();
                     objectScipt.moveDirection = moveDirection;
                     objectScipt.movingSpeed = Random.Range(movingSpeed.x, movingSpeed.y);
                 }
             }
+        }
+        
+        int GetRandomSpecificNumber()
+        {
+            int[] numbers = new int[] {-10, -5, 5, 10};
+            int index = Random.Range(0, numbers.Length);
+            return numbers[index];
         }
     }
 }

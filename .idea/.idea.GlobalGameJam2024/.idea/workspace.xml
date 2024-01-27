@@ -6,15 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0a416f44-962d-4cfb-afa3-80f674ceb9c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GlobalGameJam2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GlobalGameJam2024/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Example Scenes/Files/Scripts/GravityModifier.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Amazing Assets/Curved World/Example Scenes/Files/Scripts/GravityModifier.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/CarSpawner.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/CarSpawner.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/ChunkSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/ChunkSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/RunnerCar.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/RunnerCar.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/RunnerChunk.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/RunnerChunk.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Generation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Generation.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Scenes/Level Generation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scenes/Level Generation.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/ItemSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Content/Scripts/World Gen/ItemSpawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
