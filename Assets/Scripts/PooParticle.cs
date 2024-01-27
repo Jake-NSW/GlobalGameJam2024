@@ -5,13 +5,12 @@ namespace DefaultNamespace
     [RequireComponent(typeof(ParticleSystem))]
     public class PooParticle : MonoBehaviour
     {
-        [SerializeField]private float minScale = 0.1f;
-        [SerializeField]private float maxScale = 1f;
+        [SerializeField]private float minScalar = 0.5f;
+        [SerializeField]private float maxScalar = 2f;
         
         [SerializeField]private Vector3 velocityDirection = new Vector3(0, 1, 0);
-        [SerializeField]private float minVelocityScale = 0.1f;
-        [SerializeField]private float midVelocityScale = 0.5f;
-        [SerializeField]private float maxVelocityScale = 1f;
+        [SerializeField]private float minVelocityScale = 0.5f;
+        [SerializeField]private float maxVelocityScale = 2f;
         
         private ParticleSystem _particleSystem;
         private Vector3 _initialScale;
@@ -24,24 +23,24 @@ namespace DefaultNamespace
         
         public void UpdateViolenceScale(int violence)
         {
-            var scale = Mathf.Lerp(minScale, maxScale, violence / 100f);
+            Debug.Log($"Updating violence to {violence}");
+            var scale = Mathf.Lerp(minScalar, maxScalar, violence / 100f);
             transform.localScale = _initialScale * scale;
         }
         
         public void UpdateVelocityScale(int velocity)
         {
-            var scale = Mathf.Lerp(minVelocityScale, maxVelocityScale, velocity / 100f);
-            var scalarVector = velocityDirection * scale;
-            
-            // scale the local scale by the scalar vector
-            transform.localScale = Vector3.Scale(_initialScale, scalarVector);            
+            // var scale = Mathf.Lerp(minVelocityScale, maxVelocityScale, velocity / 100f);
+            // var scalarVector = velocityDirection * scale;
+            //
+            // // scale the local scale by the scalar vector
+            // transform.localScale = Vector3.Scale(_initialScale, Vector3.Scale(scalarVector, _initialScale));            
         }
         
         public void UpdateColor(Color color)
         {
-            var main = _particleSystem.main;
-            main.startColor = color;
+            // var main = _particleSystem.main;
+            // main.startColor = color;
         }
-        
     }
 }
