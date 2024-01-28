@@ -226,6 +226,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2386135491664672324, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2386135491664672324, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4830960817133555857, guid: bf906904ba1530644a6f9f9e771a627f,
         type: 3}
       propertyPath: <IsPlaying>k__BackingField
@@ -279,6 +289,16 @@ PrefabInstance:
     - target: {fileID: 5556169635081217839, guid: bf906904ba1530644a6f9f9e771a627f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817216135280369101, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817216135280369101, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -9646,7 +9666,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 57c7ea21d6dde493bb53a41f57b06eba, type: 2}
+      objectReference: {fileID: 2100000, guid: 4c13b57055e4b49c4bd46f6457b5b044, type: 2}
     - target: {fileID: 919132149155446097, guid: 3df7b1c71978e40629f8521534289fe3,
         type: 3}
       propertyPath: m_Name
