@@ -159,8 +159,8 @@ namespace Jam
             if (!IsPlaying)
                 return;
 
-            if (Remaining <= 0)
-                WinLevel();
+            // if (Remaining <= 0)
+            //     WinLevel();
         }
 
         /// <summary>
@@ -276,6 +276,13 @@ namespace Jam
         {
             AssertPlaying();
             m_Speed = Mathf.Clamp(m_Speed + m_IncrementSpeed, m_MinSpeed, m_MaxSpeed);
+        }
+        
+        public void SpeedBoost()
+        {
+            Debug.LogError("Implement Speed Boost");
+            //AssertPlaying();
+            //m_Speed = Mathf.Clamp(m_Speed + m_IncrementSpeed, m_MinSpeed, m_MaxSpeed);
         }
 
         public void DecrementSpeed()

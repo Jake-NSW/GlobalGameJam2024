@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Jam
@@ -18,7 +19,7 @@ namespace Jam
             }
         }
 
-        public void OnPickup()
+        public async void OnPickup()
         {
             Debug.Log($"Picking up {Type}");
 
@@ -33,8 +34,13 @@ namespace Jam
                 case PickupType.Barrier :
                     GameManager.Instance.ResetSpeed();
                     break;
-                case PickupType.EndToilet  :
+                case PickupType.EndToilet:
+                    GameManager.Instance.ResetSpeed();
+                    await Task.Delay(TimeSpan.FromSeconds(0.2f));
                     GameManager.Instance.WinLevel();
+                    break;
+                case PickupType.SpeedBoost:
+                    GameManager.Instance.SpeedBoost();
                     break;
                 default :
                     throw new ArgumentOutOfRangeException();
