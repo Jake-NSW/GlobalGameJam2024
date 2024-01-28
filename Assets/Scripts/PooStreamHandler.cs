@@ -5,10 +5,18 @@ namespace Jam
     public class PooStreamHandler : MonoBehaviour
     {
         [SerializeField]private PooStream pooStream;
+        [SerializeField]private FartController fart;
+        
         [SerializeField]private MovementController move;
 
         [SerializeField]private int minPooViolence = 50;
-        
+
+        private void Start()
+        {
+            pooStream.gameObject.SetActive(false);
+            fart.gameObject.SetActive(false);
+        }
+
         private void Update()
         {
             if (move.IsFarting)
@@ -24,8 +32,12 @@ namespace Jam
 
         private void HandlePoo()
         {
-            if(!pooStream.IsOn)
-                pooStream.TurnOn();
+            if (!pooStream.gameObject.activeSelf)
+                pooStream.gameObject.SetActive(true);
+
+            
+            if(fart.gameObject.activeSelf)
+                fart.gameObject.SetActive(false);
             
             
             // set the poo violence to be equal to current velocity / max velocity + min poo violence
@@ -43,12 +55,11 @@ namespace Jam
 
         private void HandleFart()
         {
-            if (pooStream.IsOn)
-            {
-                Debug.Log("Turning off poo stream");
-                pooStream.TurnOff();
-            }
-        
+            if (pooStream.gameObject.activeSelf)
+                pooStream.gameObject.SetActive(false);
+            
+            if(!fart.gameObject.activeSelf)
+                fart.gameObject.SetActive(true);
         }
     }
 }
