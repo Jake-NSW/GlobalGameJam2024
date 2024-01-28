@@ -57,6 +57,8 @@ public class DialogController : MonoBehaviour
         }
         
         await Task.Delay(TimeSpan.FromSeconds(2f));
+
+        if (!Application.isPlaying) return;
         
         StartCoroutine(HideDialog());
     }
