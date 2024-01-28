@@ -97,7 +97,7 @@ public class MusicManager : MonoBehaviour
 
     private IEnumerator FadeOut(AudioSource audioSource, float fadeTime)
     {
-        float startVolume = audioSource.volume;
+        float startVolume = 0.15f;
 
         while (audioSource.volume > 0)
         {
@@ -107,7 +107,7 @@ public class MusicManager : MonoBehaviour
         }
 
         audioSource.Stop();
-        audioSource.volume = startVolume; // Reset volume for next play
+        audioSource.volume = 0; // Reset volume for next play
     }
 
     public void PlayMusic(AudioClip clip)
@@ -134,10 +134,10 @@ public class MusicManager : MonoBehaviour
 
     private IEnumerator FadeIn(AudioSource audioSource, float fadeTime)
     {
-        float startVolume = 0.0f;
+        float startVolume = 0.15f;
 
         audioSource.volume = 0;
-        while (audioSource.volume < 3.0f)
+        while (audioSource.volume < 0.3f)
         {
             audioSource.volume += startVolume * Time.deltaTime / fadeTime;
 
@@ -146,7 +146,4 @@ public class MusicManager : MonoBehaviour
 
         audioSource.volume = 0.3f;
     }
-    
-    
-    
 }
