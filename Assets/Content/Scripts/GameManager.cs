@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -159,8 +160,8 @@ namespace Jam
             if (!IsPlaying)
                 return;
 
-            if (Remaining <= 0)
-                WinLevel();
+            // if (Remaining <= 0)
+            //     WinLevel();
         }
 
         /// <summary>
@@ -260,7 +261,7 @@ namespace Jam
         /// <summary>
         /// The speed of the game, should act as a multiplier
         /// </summary>
-        public float Speed => m_Speed;
+        public float Speed => m_Speed * m_SpeedMultiplyer;
 
         public float MaxSpeed => m_MaxSpeed;
         public float MinSpeed => m_MinSpeed;
@@ -272,10 +273,20 @@ namespace Jam
 
         private float m_Speed = 1;
 
+        private float m_SpeedMultiplyer = 1;
+
         public void IncrementSpeed()
         {
             AssertPlaying();
             m_Speed = Mathf.Clamp(m_Speed + m_IncrementSpeed, m_MinSpeed, m_MaxSpeed);
+        }
+        
+        public async void SpeedBoost()
+        {
+            AssertPlaying();
+            m_SpeedMultiplyer = 1.5f;
+            await Task.Delay(TimeSpan.FromSeconds(0.2f));
+            m_SpeedMultiplyer = 1;
         }
 
         public void DecrementSpeed()

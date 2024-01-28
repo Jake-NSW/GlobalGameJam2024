@@ -8,6 +8,7 @@ using UnityEditor;
 /// </summary>
 public class PooStream : MonoBehaviour
 {
+    
     [field: SerializeField] public bool IsOn { get; private set; } = false;
     [field: SerializeField] public Color PooColor { get; private set; }
     [field: SerializeField, Range(0, 100)] public int PooViolence { get; private set; } = 0;
@@ -22,6 +23,10 @@ public class PooStream : MonoBehaviour
     [SerializeField] private bool isVortexShaking = true;
     [SerializeField] private Vector3 pooViolenceBoxSize = new Vector3(0.25f, 0.25f, 0.25f);
     [SerializeField] private float pooShakingIntensity = 0.5f;
+
+    [SerializeField] private AudioSource source1;
+    [SerializeField] private AudioSource source2;
+    [SerializeField] private AudioClip[] pooSounds;
     
     private ParticleSystem[] _particleSystems;
 
@@ -34,6 +39,24 @@ public class PooStream : MonoBehaviour
     private void Awake()
     {
         _particleSystems = GetComponentsInChildren<ParticleSystem>();
+    }
+
+    private void OnEnable()
+    {
+        // enable the particle systems
+        foreach (var ps in _particleSystems)
+        {
+            ps.gameObject.SetActive(true);
+        }
+    }
+    
+    private void OnDisable()
+    {
+        // disable the particle systems
+        foreach (var ps in _particleSystems)
+        {
+            ps.gameObject.SetActive(false);
+        }
     }
 
     private void Start()
@@ -107,7 +130,6 @@ public class PooStream : MonoBehaviour
             _particleSystems[i].transform.localScale = _initialScales[i] * violenceScaleFactor;
         }
         
-        
         var newLength = Mathf.Lerp(pooSizeMinMax.x, pooSizeMinMax.y, violenceScaleFactor);
         var newLengthVector = new Vector3(1, newLength, 1);
         
@@ -149,6 +171,38 @@ public class PooStream : MonoBehaviour
     }
 
     private void Update()
+    {
+        if(!IsOn)
+            return;
+        
+        UpdatePooVortex();
+        UpdatePooSound(source1);
+        UpdatePooSound(source2);
+    }
+
+    private void UpdatePooSound(AudioSource audioSource)
+    {
+        if (PooViolence <= 0)
+        {
+            audioSource.Stop();
+            return;
+        }
+        
+        if(pooSounds.Length == 0) return;
+
+        if (!audioSource.isPlaying)
+        {
+            // Select a random sound from the _pooSounds array
+            int randomIndex = UnityEngine.Random.Range(0, pooSounds.Length);
+            AudioClip selectedClip = pooSounds[randomIndex];
+            // Play the selected sound
+            audioSource.PlayOneShot(selectedClip);
+        }
+
+        audioSource.pitch = Mathf.Lerp(0.5f, 1.5f, PooViolence / 100f);
+    }
+    
+    private void UpdatePooVortex()
     {
         if (!isVortexShaking) return;
         
