@@ -240,6 +240,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character Model
       objectReference: {fileID: 0}
+    - target: {fileID: 993220988716143836, guid: 76129d3fafff18b44a10633a88778019,
+        type: 3}
+      propertyPath: <PooColor>k__BackingField.b
+      value: 0.070621215
+      objectReference: {fileID: 0}
+    - target: {fileID: 993220988716143836, guid: 76129d3fafff18b44a10633a88778019,
+        type: 3}
+      propertyPath: <PooColor>k__BackingField.g
+      value: 0.15505962
+      objectReference: {fileID: 0}
+    - target: {fileID: 993220988716143836, guid: 76129d3fafff18b44a10633a88778019,
+        type: 3}
+      propertyPath: <PooColor>k__BackingField.r
+      value: 0.21698111
+      objectReference: {fileID: 0}
     - target: {fileID: 7672137962229701928, guid: 76129d3fafff18b44a10633a88778019,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -252,7 +252,8 @@ namespace Jam
         /// The speed of the game, should act as a multiplier
         /// </summary>
         public float Speed => m_Speed;
-
+        public float MaxSpeed => m_MaxSpeed;
+        public float MinSpeed => m_MinSpeed;
         [SerializeField] private float m_MaxSpeed = 3;
         [SerializeField] private float m_MinSpeed = 1;
 
