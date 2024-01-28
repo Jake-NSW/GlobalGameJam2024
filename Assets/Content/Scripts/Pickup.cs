@@ -14,15 +14,12 @@ namespace Jam
         {
             if (other.TryGetComponent<MovementController>(out _))
             {
-                Debug.Log("Trigger Enter");
                 OnPickup();
             }
         }
 
         public void OnPickup()
         {
-            Debug.Log($"Picking up {Type}");
-
             switch (Type)
             {
                 case PickupType.ToiletPaper :

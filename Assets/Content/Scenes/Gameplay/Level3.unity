@@ -138,11 +138,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 307555007736441703, guid: bf906904ba1530644a6f9f9e771a627f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2386135491664672324, guid: bf906904ba1530644a6f9f9e771a627f,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -167,11 +162,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4830960817133555857, guid: bf906904ba1530644a6f9f9e771a627f,
-        type: 3}
-      propertyPath: <IsPlaying>k__BackingField
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4856187442206452705, guid: bf906904ba1530644a6f9f9e771a627f,
         type: 3}
@@ -406,6 +396,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c56b7e4c827057245b3f12254dc24f0c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c544a542211444223a681f470030ca49, type: 2}
     - target: {fileID: 919132149155446097, guid: c56b7e4c827057245b3f12254dc24f0c,
         type: 3}
       propertyPath: m_Name
@@ -639,6 +634,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 177.924
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: aea44418ea3be424d9902a0b5774fc5c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de5ae6aa58dd325408a6bab3854258f3, type: 2}
     - target: {fileID: 919132149155446097, guid: aea44418ea3be424d9902a0b5774fc5c,
         type: 3}
       propertyPath: m_Name
@@ -2011,6 +2011,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 33.904
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: aea44418ea3be424d9902a0b5774fc5c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de5ae6aa58dd325408a6bab3854258f3, type: 2}
     - target: {fileID: 919132149155446097, guid: aea44418ea3be424d9902a0b5774fc5c,
         type: 3}
       propertyPath: m_Name
@@ -2304,8 +2309,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -105.7, y: 71.5}
-  m_SizeDelta: {x: 250, y: 149.1}
+  m_AnchoredPosition: {x: -70.57501, y: 71.5}
+  m_SizeDelta: {x: 179.75, y: 149.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566331662
 MonoBehaviour:

@@ -95,7 +95,7 @@ MonoBehaviour:
   Level2CinematicSong: {fileID: 8300000, guid: 7b25958d7a1eb438088c7fd3cec268b9, type: 3}
   Level2Song: {fileID: 8300000, guid: c3525203be2f546dba761ffe326f213e, type: 3}
   Level3CinematicSong: {fileID: 8300000, guid: 7b25958d7a1eb438088c7fd3cec268b9, type: 3}
-  Level3Song: {fileID: 8300000, guid: d0fd20e9ede79410fb3ccae35f3e38e6, type: 3}
+  Level3Song: {fileID: 8300000, guid: 2f0b8c8606a0f4d92b12d6097aaa513b, type: 3}
   EndCinematicSong: {fileID: 8300000, guid: 7b25958d7a1eb438088c7fd3cec268b9, type: 3}
 --- !u!82 &4622006784026639871
 AudioSource:
