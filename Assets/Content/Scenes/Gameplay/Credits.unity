@@ -376,232 +376,26 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<size=52><b>Throne Quest</b></size>
-
-
-    <b>Directed by</b>
-
-    Jake,
-    Simon, Conor
-
-    
-
-    <b>Written by</b>
-
-    Simon
-
-    
-
-    <b>Produced
-    by</b>
-
-    Conor
-
-    
-
-    <b>Director of Photography</b>
-
-    Jake
-
-    
-
-    <b>Film
-    Editing</b>
-
-    Simon
-
-    
-
-    <b>Casting By</b>
-
-    Conor
-
-    
-
-    <b>Production
-    Design</b>
-
-    Jake
-
-    
-
-    <b>Art Direction</b>
-
-    Simon
-
-    
-
-    <b>Set
-    Decoration</b>
-
-    Conor
-
-    
-
-    <b>Costume Design</b>
-
-    Jake
-
-    
-
-    <b>Make-up
-    and Hair Styling</b>
-
-    Simon
-
-    
-
-    <b>Sound Mixing</b>
-
-    Conor
-
-    
-
-    <b>Visual
-    Effects Supervisor</b>
-
-    Jake
-
-    
-
-    <b>Special Effects Coordinator</b>
-
-    Simon
-
-    
-
-    <b>Music
-    Composed by</b>
-
-    Conor
-
-    
-
-    <b>Stunt Coordinator</b>
-
-    Jake
-
-    
-
-    <b>Lead
-    Animators</b>
-
-    Simon and Conor
-
-    
-
-    <b>Voice Acting</b>
-
-    Jake
-    as ''Hero''
-
-    Simon as ''Villain''
-
-    Conor as ''Sidekick''
-
-    
-
-    <b>Gaffer</b>
-
-    Jake
-
-    
-
-    <b>Key
-    Grip</b>
-
-    Simon
-
-    
-
-    <b>Script Supervisor</b>
-
-    Conor
-
-    
-
-    <b>Location
-    Manager</b>
-
-    Jake
-
-    
-
-    <b>Props Master</b>
-
-    Simon
-
-    
-
-    <b>Foley
-    Artist</b>
-
-    Conor
-
-    
-
-    <b>Cinematography by</b>
-
-    Jake
-
-    
-
-    <b>Edited
-    by</b>
-
-    Simon
-
-    
-
-    <b>Casting Associate</b>
-
-    Conor
-
-    
-
-    <b>Assistant
-    Director</b>
-
-    Jake
-
-    
-
-    <b>Second Unit Director</b>
-
-    Simon
-
-    
-
-    <b>Colorist</b>
-
-    Conor
-
-    
-
-    <b>Publicity
-    and Marketing</b>
-
-    Jake
-
-    
-
-    <b>Behind-the-Scenes Photographer</b>
-
-    Simon
-
-    
-
-    <b>Catering
-    Services</b>
-
-    Conor
-
-    
-
-    <b>And many more roles played by</b>
-
-    Jake,
-    Simon, and Conor'
+  m_text: "<size=52><b>Throne Quest</b></size>\n\n<b>Directed by</b>\nJake, Simon,
+    Conor\n\n\n<b>Written by</b>\nSimon\n\n\n<b>Produced by</b>\nConor\n\n\n<b>Director
+    of Photography</b>\nJake\n\n\n<b>Film Editing</b>\nSimon\n\n\n<b>Casting By</b>\nConor\n\n\n<b>Production
+    Design</b>\nJake\n\n\n<b>Art Direction</b>\nSimon\n\n\n<b>Set Decoration</b>\nConor\n\n\n<b>Costume
+    Design</b>\nJake\n\n\n<b>Make-up and Hair Styling</b>\nSimon\n\n\n<b>Sound Mixing</b>\nConor\n\n\n<b>Visual
+    Effects Supervisor</b>\nJake\n\n\n<b>Special Effects Coordinator</b>\nSimon\n\n\n<b>Music
+    Composed by</b>\nConor\n\n\n<b>Stunt Coordinator</b>\nJake\n\n\n<b>Lead Animators</b>\nSimon
+    and Conor\n\n\n<b>Voice Acting</b>\nJake as 'Hero'\nSimon as 'Villain'\nConor
+    as 'Sidekick'\n\n\n<b>Gaffer</b>\nJake\n\n\n<b>Key Grip</b>\nSimon\n\n\n<b>Script
+    Supervisor</b>\nConor\n\n\n<b>Location Manager</b>\nJake\n\n\n<b>Props Master</b>\nSimon\n\n\n<b>Foley
+    Artist</b>\nConor\n\n\n<b>Cinematography by</b>\nJake\n\n\n<b>Edited by</b>\nSimon\n\n\n<b>Casting
+    Associate</b>\nConor\n\n\n<b>Assistant Director</b>\nJake\n\n\n<b>Second Unit
+    Director</b>\nSimon\n\n\n<b>Colorist</b>\nConor\n\n\n<b>Publicity and Marketing</b>\nJake\n\n\n<b>Behind-the-Scenes
+    Photographer</b>\nSimon\n\n\n<b>Catering Services</b>\nConor\n\n\n<b>And many
+    more roles played by</b>\nJake, Simon, and Conor\n\n<b> Other </b>\n\nMusic by
+    Bensound.com/royalty-free-music\r\nLicense code: 7VTUI2B6RYISUJSW\r\n\r\nMusic
+    by: https://www.bensound.com/free-music-for-videos\r\nLicense code: UJAG0TU9XXUDKUBL\r\n\r\nMusic
+    by: Bensound.com/royalty-free-music\r\nLicense code: 6UDGMMXZVRL2XE9T\r\n\r\nMusic
+    I use: Bensound\r\nLicense code: BBQLAVUE1UH1XFCS\n\n\u2018Curved World\u2019
+    Shaders were used from the package by Amazing Assets from the Unity Assets Store"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
