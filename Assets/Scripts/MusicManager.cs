@@ -134,7 +134,7 @@ public class MusicManager : MonoBehaviour
 
     private IEnumerator FadeIn(AudioSource audioSource, float fadeTime)
     {
-        float startVolume = 0.0f;
+        float startVolume = 0.2f;
 
         audioSource.volume = 0;
         while (audioSource.volume < 0.3f)
