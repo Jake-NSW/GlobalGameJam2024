@@ -8,8 +8,7 @@ using UnityEditor;
 /// </summary>
 public class PooStream : MonoBehaviour
 {
-
-    
+    [field: SerializeField] public bool IsOn { get; private set; } = false;
     [field: SerializeField] public Color PooColor { get; private set; }
     [field: SerializeField, Range(0, 100)] public int PooViolence { get; private set; } = 0;
     
@@ -47,6 +46,25 @@ public class PooStream : MonoBehaviour
         for (var i = 0; i < _particleSystems.Length; i++)
         {
             _initialScales[i] = _particleSystems[i].transform.localScale;
+        }
+    }
+    
+    public void TurnOff()
+    {
+        IsOn = false;
+        foreach (var ps in _particleSystems)
+        {
+            ps.gameObject.SetActive(false);
+            
+        }
+    }
+    
+    public void TurnOn()
+    {
+        IsOn = true;
+        foreach (var ps in _particleSystems)
+        {
+            ps.gameObject.SetActive(true);
         }
     }
 
