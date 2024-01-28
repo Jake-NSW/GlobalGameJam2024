@@ -82,6 +82,12 @@ namespace Jam
             StartCoroutine(LoadSceneWithTransition(index + k_LevelOffset));
         }
 
+        public void LoadNextLevel()
+        {
+            var active = SceneManager.GetActiveScene().buildIndex;
+            LoadLevelFromIndex(active - k_LevelOffset + 1);
+        }
+
         /// <summary>
         /// Returns the name of a level, based on its index
         /// </summary>
