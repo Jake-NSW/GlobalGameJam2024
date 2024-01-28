@@ -263,6 +263,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 141805132}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &141805134 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2542936092448430619, guid: 30be1e4e6bd5b57469d490001a54602b,
+    type: 3}
+  m_PrefabInstance: {fileID: 141805132}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0428d9cdc7936b3418cb79a96d04e86c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &310835874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,9 +1116,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storyStartDelay: 1
   fadeTime: 0.4
-  textSlideTime: 0.1
+  textSlideTime: 0.06
   panels:
   - {fileID: 1555417587}
+  - {fileID: 141805134}
   onCinematicFinished:
     m_PersistentCalls:
       m_Calls:
@@ -1261,7 +1274,7 @@ PrefabInstance:
     - target: {fileID: 6205706513396481253, guid: 30be1e4e6bd5b57469d490001a54602b,
         type: 3}
       propertyPath: m_text
-      value: I think I'll try going to the gym tomorrow...
+      value: damn my ass hurts!
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
