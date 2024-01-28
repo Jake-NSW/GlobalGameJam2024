@@ -321,7 +321,7 @@ namespace Jam
 
         public void ResetSpeed()
         {
-            m_SpeedMultiplyer = 1;
+            m_SpeedMultiplier = 1;
             m_Speed = m_MinSpeed;
         }
     }
