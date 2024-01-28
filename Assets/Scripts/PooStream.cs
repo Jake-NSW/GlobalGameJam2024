@@ -120,18 +120,15 @@ public class PooStream : MonoBehaviour
     private void UpdateParticleScale()
     {
         var violenceScaleFactor = PooViolence / 100f;
-        // var newSize = Vector3.Lerp(
-        //     _initialScales[0],
-        //     _initialScales[1],
-        //     violenceScaleFactor);
+        var newSize = Vector3.Lerp(
+            _initialScales[0],
+            _initialScales[1],
+            violenceScaleFactor);
 
         // increase all the particles sizes.
-        if (_particleSystems.Length == 0)
-            return;
         
         for (var i = 0; i < _particleSystems.Length; i++)
         {
-            if(_particleSystems[i] == null) continue;
             _particleSystems[i].transform.localScale = _initialScales[i] * violenceScaleFactor;
         }
         
