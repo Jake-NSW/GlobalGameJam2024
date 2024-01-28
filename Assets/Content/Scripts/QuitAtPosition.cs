@@ -10,10 +10,7 @@ namespace Jam
         {
             if (((RectTransform)transform).anchoredPosition.y > m_QuitPosition)
             {
-                Application.Quit();
-#if UNITY_EDITOR
-                UnityEditor.EditorApplication.ExitPlaymode();
-#endif
+                GameManager.Instance.LoadMainMenu();
             }
         }
     }

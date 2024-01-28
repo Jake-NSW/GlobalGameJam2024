@@ -46,6 +46,7 @@ namespace Jam
         private void OnGUI()
         {
             GUILayout.Label("Fart Capacity: " + m_FartCapacity);
+            GUILayout.Label("Fart Normal: " + m_FartCapacity / m_MaxFartCapacity);
             GUILayout.Label("Farting: " + m_IsFarting);
             GUILayout.Label("Since Last Fart: " + m_SinceLastFart);
             GUILayout.Label("Velocity: " + m_Velocity);

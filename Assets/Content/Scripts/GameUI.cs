@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
 using UnityEngine;
@@ -14,13 +11,19 @@ namespace Jam
         public static GameUI Instance { get; set; }
 
         [SerializeField] private TextMeshProUGUI m_Points;
-        [SerializeField] private TextMeshProUGUI m_Time;
         [SerializeField] private CanvasGroup m_Root;
         [SerializeField] private Slider m_Fart;
         [SerializeField] private Slider m_Speed;
+        [SerializeField] private Slider m_Time;
 
         private void Awake()
         {
+            if (Instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             Instance = this;
         }
 
@@ -30,10 +33,13 @@ namespace Jam
             m_Root.alpha = GameManager.Instance.IsPlaying ? 1 : 0;
 
             m_Points.text = GameManager.Instance.Points.ToString(CultureInfo.InvariantCulture);
-            m_Time.text = GameManager.Instance.Remaining.ToString("0.00");
+            m_Time.value = GameManager.Instance.RemainingNormalized;
             m_Speed.value = GameManager.Instance.Speed / GameManager.Instance.MaxSpeed;
         }
 
-        public float FartPower { set => m_Fart.value = value; }
+        public float FartPower
+        {
+            set => m_Fart.value = value;
+        }
     }
 }
