@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2435448078238684461}
   - component: {fileID: 3366412468893621815}
   - component: {fileID: 1108548633095339064}
+  - component: {fileID: 1912868869801155532}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -29,8 +30,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3600817779736094097}
   - {fileID: 3751114156311209339}
@@ -51,13 +52,12 @@ MonoBehaviour:
   m_Acceleration: 60
   m_MaxSpeed: 50
   m_Drag: 2
-  m_Sides: {x: 0, y: 0}
+  m_Sides: {x: 14, y: 14}
   m_Fart: 25
   m_FartRegeneration: 0.5
   m_FartRegenerationDelay: 0.2
   m_FartDepletion: 0.8
   m_MaxFartCapacity: 0.5
-  m_PooController: {fileID: 6217471454717045861}
 --- !u!65 &3366412468893621815
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -106,6 +106,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1912868869801155532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714306582155485299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d91e90c5bdd545b19bbed31dc7d00682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooStream: {fileID: 6217471454717045861}
+  move: {fileID: 2435448078238684461}
+  minPooViolence: 50
 --- !u!1 &4956052530722821547
 GameObject:
   m_ObjectHideFlags: 0
