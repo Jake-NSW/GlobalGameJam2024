@@ -1077,10 +1077,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Points: {fileID: 4367741439090488848}
-  m_Time: {fileID: 0}
   m_Root: {fileID: 309499844469810126}
   m_Fart: {fileID: 6173461320765924754}
   m_Speed: {fileID: 6168349740419442642}
+  m_Time: {fileID: 6675434935533714433}
 --- !u!1 &1871248914256783353
 GameObject:
   m_ObjectHideFlags: 0
