@@ -70,6 +70,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public void FadeOutMusic(float fadeTime = 0.18f) // Default fade out time is 2 seconds
     {
         // Don't Fade out the last cinematic song. Keep it going for the credits
