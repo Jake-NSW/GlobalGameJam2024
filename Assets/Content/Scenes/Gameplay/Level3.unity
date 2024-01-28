@@ -143,6 +143,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2386135491664672324, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2386135491664672324, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4830960817133555857, guid: bf906904ba1530644a6f9f9e771a627f,
         type: 3}
       propertyPath: <IsPlaying>k__BackingField
@@ -196,6 +206,16 @@ PrefabInstance:
     - target: {fileID: 5556169635081217839, guid: bf906904ba1530644a6f9f9e771a627f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817216135280369101, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817216135280369101, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -408,7 +428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_chunkSpawner: {fileID: 1439108163}
   m_curvedWorldController: {fileID: 1988471016}
-  m_pickupType: 1
+  m_pickupType: 4
   m_objects:
   - {fileID: 473856261}
   m_SpawnFrequencyInSeconds: 2
