@@ -75,8 +75,13 @@ namespace Jam
             }
 
             BoxCollider boxCollider = obj.AddComponent<BoxCollider>();
+            boxCollider.isTrigger = true;
             boxCollider.center = mesh.bounds.center;
             boxCollider.size = mesh.bounds.size * 0.8f;
+
+            var rg = obj.AddComponent<Rigidbody>();
+            rg.mass = 0;
+            rg.useGravity = false;
         }
 
         void Update()
@@ -111,7 +116,10 @@ namespace Jam
                 item.SetActive(true);
                 
                 item.layer = LayerMask.NameToLayer("Pickup");
-                item.AddComponent<DestoryStackedColliders>();
+                var destoryStack = item.AddComponent<DestoryStackedColliders>();
+
+                destoryStack.m_pickupType = m_pickupType;
+                
 
                 // Use the cached Z position
                 item.transform.position = new Vector3(transform.position.x,selectedHeight ,transform.position.z) + new Vector3(0, 0, zPosition); 
