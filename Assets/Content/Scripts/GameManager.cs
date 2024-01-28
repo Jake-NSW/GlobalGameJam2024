@@ -7,8 +7,11 @@ namespace Jam
 {
     public sealed class GameManager : MonoBehaviour
     {
-        // Singleton :(
-
+        // Singleton :( 
+        // didn't need to be...
+        
+        [SerializeField] private float startSpeed = 2f;
+        
         public static GameManager Instance { get; private set; }
 
         public void Awake()
@@ -187,7 +190,8 @@ namespace Jam
         /// </summary>
         public void Reset()
         {
-            m_Speed = m_MinSpeed;
+            var startingSpeed = Mathf.Clamp(startSpeed, m_MinSpeed, m_MaxSpeed);
+            m_Speed = startingSpeed;
             m_Points = 0;
             m_PointsUpdateTimer = 0;
         }

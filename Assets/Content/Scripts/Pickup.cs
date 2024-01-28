@@ -19,7 +19,7 @@ namespace Jam
             }
         }
 
-        public async void OnPickup()
+        public void OnPickup()
         {
             Debug.Log($"Picking up {Type}");
 
@@ -36,7 +36,6 @@ namespace Jam
                     break;
                 case PickupType.EndToilet:
                     GameManager.Instance.ResetSpeed();
-                    await Task.Delay(TimeSpan.FromSeconds(0.2f));
                     GameManager.Instance.WinLevel();
                     break;
                 case PickupType.SpeedBoost:

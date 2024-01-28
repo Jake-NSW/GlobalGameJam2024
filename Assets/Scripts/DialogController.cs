@@ -21,13 +21,13 @@ public class DialogController : MonoBehaviour
         m_canvas.alpha = 0;
         m_text.text = "";
     }
-
-    public async void Start()
+    
+    public IEnumerator Start()
     {
-        await Task.Delay(TimeSpan.FromSeconds(4));
+        yield return new WaitForSeconds(4f);
         StartCoroutine(ShowDialog());
         
-        await Task.Delay(TimeSpan.FromSeconds(1.5f));
+        yield return new WaitForSeconds(1.5f);
         PickDialog();
     }
 
@@ -36,29 +36,28 @@ public class DialogController : MonoBehaviour
         switch(SceneManager.GetActiveScene().name)
         {
             case "Level1":
-                FillDialog("I dreamed this would happen last night. Maybe I'm psychic.");
+                StartCoroutine(FillDialog("I should have know 'blue-cheese' sushi wasn't a thing!"));
                 break;
             case "Level2":
-                FillDialog("Why do I never learn...");
+                StartCoroutine(FillDialog("Why did I have to order the squid and asparagus burrito!?"));
                 break;
             case "Level3":
-                FillDialog("Time and space will bend to my will.      All roads lead to the golden dunny");
+                StartCoroutine(FillDialog("I've seen some messed up public toilets but this is a new level!"));
                 break;
         }
     }
 
-
-    private async void FillDialog(string text)
+    private IEnumerator FillDialog(string text)
     {
         foreach (char letter in text.ToCharArray())
         {
             m_text.text += letter;
-            await Task.Delay(TimeSpan.FromSeconds(0.05f));
+            yield return new WaitForSeconds(0.05f);
         }
         
-        await Task.Delay(TimeSpan.FromSeconds(2f));
+        yield return new WaitForSeconds(2f);
 
-        if (!Application.isPlaying) return;
+        if (!Application.isPlaying) yield break;
         
         StartCoroutine(HideDialog());
     }

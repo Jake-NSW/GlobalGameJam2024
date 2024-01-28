@@ -13,7 +13,6 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - CURVEDWORLD_BEND_TYPE_TWISTEDSPIRAL_X_POSITIVE
-  - _METALLICSPECGLOSSMAP
   - _NORMALMAP
   m_InvalidKeywords:
   - CURVEDWORLD_BEND_ID_1

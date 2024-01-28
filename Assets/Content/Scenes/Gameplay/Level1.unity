@@ -221,11 +221,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 307555007736441703, guid: bf906904ba1530644a6f9f9e771a627f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2386135491664672324, guid: bf906904ba1530644a6f9f9e771a627f,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -251,16 +246,6 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4622006784026639871, guid: bf906904ba1530644a6f9f9e771a627f,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4830960817133555857, guid: bf906904ba1530644a6f9f9e771a627f,
-        type: 3}
-      propertyPath: <IsPlaying>k__BackingField
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4856187442206452705, guid: bf906904ba1530644a6f9f9e771a627f,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -269,11 +254,6 @@ PrefabInstance:
     - target: {fileID: 4856187442206452705, guid: bf906904ba1530644a6f9f9e771a627f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4944575032670715227, guid: bf906904ba1530644a6f9f9e771a627f,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5556169635081217839, guid: bf906904ba1530644a6f9f9e771a627f,
@@ -2329,8 +2309,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -105.7, y: 71.5}
-  m_SizeDelta: {x: 250, y: 149.1}
+  m_AnchoredPosition: {x: -79.3, y: 71.5}
+  m_SizeDelta: {x: 173.1752, y: 149.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566331662
 MonoBehaviour:
