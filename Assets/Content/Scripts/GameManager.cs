@@ -28,7 +28,7 @@ namespace Jam
         {
             Reset();
             IsPlaying = false;
-            
+
             Application.targetFrameRate = 60;
             Time.fixedDeltaTime = 0.01667f;
         }
@@ -41,7 +41,7 @@ namespace Jam
                 GUI.Label(new Rect(Screen.width / 2 - 50, 10, 100, 20), $"Not Playing!");
                 return;
             }
-            
+
             GUI.Label(new Rect(Screen.width / 2 - 50, 10, 100, 20), $"Points: {Points}");
             GUI.Label(new Rect(Screen.width / 2 - 50, 30, 100, 20), $"Speed: {Speed}");
             GUI.Label(new Rect(Screen.width / 2 - 50, 50, 100, 20), $"Time: {Remaining}");
@@ -82,6 +82,9 @@ namespace Jam
             StartCoroutine(LoadSceneWithTransition(index + k_LevelOffset));
         }
 
+        /// <summary>
+        /// Loads the next level
+        /// </summary>
         public void LoadNextLevel()
         {
             var active = SceneManager.GetActiveScene().buildIndex;
@@ -107,8 +110,9 @@ namespace Jam
 
         private IEnumerator LoadSceneWithTransition(int index)
         {
-            MusicManager.Instance.FadeOutMusic();
-            
+            if(SceneManager.GetActiveScene().name != "Cinematic4")
+                MusicManager.Instance.FadeOutMusic();
+
             yield return m_Transition.ShowTransition();
 
 
@@ -188,7 +192,7 @@ namespace Jam
             IsPlaying = false;
 
             // Should show an event with some UI instead of this?
-            LoadLevelFromIndex(SceneManager.GetActiveScene().buildIndex - k_LevelOffset + 1);
+            LoadNextLevel();
         }
 
         /// <summary>
