@@ -26,8 +26,6 @@ namespace Jam
             }
             
             HandlePoo();
-            
-            
         }
 
         private void HandlePoo()
