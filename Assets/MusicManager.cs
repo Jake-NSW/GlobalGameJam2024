@@ -46,19 +46,19 @@ public class MusicManager : MonoBehaviour
             case "MainMenu":
                 PlayMusic(MainMenuSong);
                 break;
-            case "Level1Cinematic":
+            case "Cinematic1":
                 PlayMusic(Level1CinematicSong);
                 break;
             case "Level1":
                 PlayMusic(Level1Song);
                 break;
-            case "Level2Cinematic":
+            case "Cinematic2":
                 PlayMusic(Level2CinematicSong);
                 break;
             case "Level2":
                 PlayMusic(Level2Song);
                 break;
-            case "Level3Cinematic":
+            case "Cinematic3":
                 PlayMusic(Level3CinematicSong);
                 break;
             case "Level3":

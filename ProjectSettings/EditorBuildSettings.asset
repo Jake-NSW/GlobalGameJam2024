@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Content/Scenes/Gameplay/Level3.unity
     guid: 3272a776d81e615498b91cca7bace2c2
+  - enabled: 1
+    path: Assets/Content/Scenes/Gameplay/Cinematic4.unity
+    guid: fd7364727795a481f86c8089162761cb
   m_configObjects: {}
