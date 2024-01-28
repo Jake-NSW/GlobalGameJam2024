@@ -18,6 +18,12 @@ namespace Jam
 
         private void Awake()
         {
+            if (Instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             Instance = this;
         }
 
@@ -31,6 +37,9 @@ namespace Jam
             m_Speed.value = GameManager.Instance.Speed / GameManager.Instance.MaxSpeed;
         }
 
-        public float FartPower { set => m_Fart.value = value; }
+        public float FartPower
+        {
+            set => m_Fart.value = value;
+        }
     }
 }
