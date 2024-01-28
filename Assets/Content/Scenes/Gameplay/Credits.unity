@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.1341472, b: 0.121078566, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -327,6 +327,9 @@ GameObject:
   - component: {fileID: 640257467}
   - component: {fileID: 640257469}
   - component: {fileID: 640257468}
+  - component: {fileID: 640257470}
+  - component: {fileID: 640257471}
+  - component: {fileID: 640257472}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -348,11 +351,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 350373411}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 90}
-  m_SizeDelta: {x: 450, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -1080}
+  m_SizeDelta: {x: 450, y: 0}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &640257468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,10 +376,232 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Throne Quest
+  m_text: '<size=52><b>Throne Quest</b></size>
 
 
-    by Jake, Simon and Conor'
+    <b>Directed by</b>
+
+    Jake,
+    Simon, Conor
+
+    
+
+    <b>Written by</b>
+
+    Simon
+
+    
+
+    <b>Produced
+    by</b>
+
+    Conor
+
+    
+
+    <b>Director of Photography</b>
+
+    Jake
+
+    
+
+    <b>Film
+    Editing</b>
+
+    Simon
+
+    
+
+    <b>Casting By</b>
+
+    Conor
+
+    
+
+    <b>Production
+    Design</b>
+
+    Jake
+
+    
+
+    <b>Art Direction</b>
+
+    Simon
+
+    
+
+    <b>Set
+    Decoration</b>
+
+    Conor
+
+    
+
+    <b>Costume Design</b>
+
+    Jake
+
+    
+
+    <b>Make-up
+    and Hair Styling</b>
+
+    Simon
+
+    
+
+    <b>Sound Mixing</b>
+
+    Conor
+
+    
+
+    <b>Visual
+    Effects Supervisor</b>
+
+    Jake
+
+    
+
+    <b>Special Effects Coordinator</b>
+
+    Simon
+
+    
+
+    <b>Music
+    Composed by</b>
+
+    Conor
+
+    
+
+    <b>Stunt Coordinator</b>
+
+    Jake
+
+    
+
+    <b>Lead
+    Animators</b>
+
+    Simon and Conor
+
+    
+
+    <b>Voice Acting</b>
+
+    Jake
+    as ''Hero''
+
+    Simon as ''Villain''
+
+    Conor as ''Sidekick''
+
+    
+
+    <b>Gaffer</b>
+
+    Jake
+
+    
+
+    <b>Key
+    Grip</b>
+
+    Simon
+
+    
+
+    <b>Script Supervisor</b>
+
+    Conor
+
+    
+
+    <b>Location
+    Manager</b>
+
+    Jake
+
+    
+
+    <b>Props Master</b>
+
+    Simon
+
+    
+
+    <b>Foley
+    Artist</b>
+
+    Conor
+
+    
+
+    <b>Cinematography by</b>
+
+    Jake
+
+    
+
+    <b>Edited
+    by</b>
+
+    Simon
+
+    
+
+    <b>Casting Associate</b>
+
+    Conor
+
+    
+
+    <b>Assistant
+    Director</b>
+
+    Jake
+
+    
+
+    <b>Second Unit Director</b>
+
+    Simon
+
+    
+
+    <b>Colorist</b>
+
+    Conor
+
+    
+
+    <b>Publicity
+    and Marketing</b>
+
+    Jake
+
+    
+
+    <b>Behind-the-Scenes Photographer</b>
+
+    Simon
+
+    
+
+    <b>Catering
+    Services</b>
+
+    Conor
+
+    
+
+    <b>And many more roles played by</b>
+
+    Jake,
+    Simon, and Conor'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -403,15 +628,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -453,6 +678,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640257466}
   m_CullTransparentMesh: 1
+--- !u!114 &640257470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640257466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
+--- !u!114 &640257471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640257466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd95b46751860b429d3232301a6adf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Speed: 400
+--- !u!114 &640257472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640257466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb39cb8575347d9b0fad05142ffe748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_QuitPosition: 3000
 --- !u!1 &900430732
 GameObject:
   m_ObjectHideFlags: 0
