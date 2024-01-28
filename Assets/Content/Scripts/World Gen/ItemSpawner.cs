@@ -117,6 +117,8 @@ namespace Jam
                 var movingItem = item.AddComponent<MovingItem>();
                 var pickup = item.AddComponent<Pickup>();
                 pickup.Type = m_pickupType;
+                item.layer = LayerMask.NameToLayer("Pickup");
+                
                 var disablecurvedWorld = item.AddComponent<DisableCurvedWorld>();
                 disablecurvedWorld.curvedWorldController = m_curvedWorldController;
                 disablecurvedWorld.zMin = -11;
