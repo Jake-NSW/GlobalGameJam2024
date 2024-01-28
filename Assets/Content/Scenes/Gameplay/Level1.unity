@@ -9501,7 +9501,7 @@ MonoBehaviour:
   m_objects:
   - {fileID: 375798922}
   m_SpawnFrequencyInSeconds: 1.5
-  m_spawnFailureRate: 0.5
+  m_spawnFailureRate: 0.8
   m_howManyToSpawnAtATime: 1
   m_autoRotateModel: 0
   StartRotation: {x: 15, y: 90, z: 5}
