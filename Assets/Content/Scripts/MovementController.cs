@@ -9,6 +9,8 @@ namespace Jam
         /// Is the movement controller farting? 
         /// </summary>
         public bool IsFarting => m_IsFarting;
+        public Vector3 Velocity => m_Velocity;
+        public float MaxSpeed => m_MaxSpeed;
 
         [SerializeField] private float m_Acceleration = 10;
         [SerializeField] private float m_MaxSpeed = 3;
@@ -24,8 +26,6 @@ namespace Jam
         [SerializeField] private float m_FartDepletion;
 
         [SerializeField] private float m_MaxFartCapacity = 0.6f;
-
-        [SerializeField] private PooStream m_PooController;
 
         private Vector3 m_Velocity;
 
@@ -154,7 +154,6 @@ namespace Jam
         private void LateUpdate()
         {
             transform.LookAt(transform.position + (m_Velocity / 4) + Forward * 4);
-            m_PooController.UpdateViolence((int)(m_Velocity.magnitude / m_MaxSpeed * 100));
         }
     }
 }
