@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Jam
 {
-    public enum PickupType { ToiletPaper, Food, Barrier, EndToilet }
+    public enum PickupType { ToiletPaper, Food, Barrier, EndToilet, SpeedBoost }
 
     public sealed class Pickup : MonoBehaviour
     {
