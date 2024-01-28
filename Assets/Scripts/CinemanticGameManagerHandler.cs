@@ -5,6 +5,6 @@ public class CinematicGameManagerHandler : MonoBehaviour
 {
     public void NextLevel()
     {
-        GameManager.Instance.LooseLevel();
+        GameManager.Instance.LoadNextLevel();
     }
 }
