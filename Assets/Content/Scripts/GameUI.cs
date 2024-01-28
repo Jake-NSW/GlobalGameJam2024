@@ -17,6 +17,7 @@ namespace Jam
         [SerializeField] private TextMeshProUGUI m_Time;
         [SerializeField] private CanvasGroup m_Root;
         [SerializeField] private Slider m_Fart;
+        [SerializeField] private Slider m_Speed;
 
         private void Awake()
         {
@@ -30,8 +31,9 @@ namespace Jam
 
             m_Points.text = GameManager.Instance.Points.ToString(CultureInfo.InvariantCulture);
             m_Time.text = GameManager.Instance.Remaining.ToString("0.00");
+            m_Speed.value = GameManager.Instance.Speed / GameManager.Instance.MaxSpeed;
         }
-        
+
         public float FartPower { set => m_Fart.value = value; }
     }
 }
