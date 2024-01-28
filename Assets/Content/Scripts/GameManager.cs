@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace Jam
 {
@@ -146,19 +144,23 @@ namespace Jam
 
         // Playing
 
-        [SerializeField] private float m_LevelLength = 60;
+        [SerializeField] private float m_LevelLength = 60 * 2; // Three Minutes
 
         /// <summary>
         /// Remaining time left in the level
         /// </summary>
         public float Remaining => m_LevelLength - m_SinceStart;
 
-        private TimeSince m_SinceStart;
+        public float RemainingNormalized => Mathf.Clamp01(m_SinceStart / m_LevelLength);
+
+        private float m_SinceStart;
 
         private void TimerUpdateLoop()
         {
             if (!IsPlaying)
                 return;
+
+            m_SinceStart += Time.deltaTime * Speed;
 
             // if (Remaining <= 0)
             //     WinLevel();
@@ -262,7 +264,7 @@ namespace Jam
         /// <summary>
         /// The speed of the game, should act as a multiplier
         /// </summary>
-        public float Speed => m_Speed * m_SpeedMultiplyer;
+        public float Speed => m_Speed * m_SpeedMultiplier;
 
         public float MaxSpeed => m_MaxSpeed;
         public float MinSpeed => m_MinSpeed;
@@ -274,39 +276,41 @@ namespace Jam
 
         private float m_Speed = 1;
 
-        private float m_SpeedMultiplyer = 1;
+        private float m_SpeedMultiplier = 1;
 
         public void IncrementSpeed()
         {
             AssertPlaying();
             m_Speed = Mathf.Clamp(m_Speed + m_IncrementSpeed, m_MinSpeed, m_MaxSpeed);
         }
-        
+
         // Coroutine for lerping the speed multiplier
         private IEnumerator LerpSpeed(float start, float end, float duration)
         {
             float elapsed = 0;
             while (elapsed < duration)
             {
-                m_SpeedMultiplyer = Mathf.Lerp(start, end, elapsed / duration);
+                m_SpeedMultiplier = Mathf.Lerp(start, end, elapsed / duration);
                 elapsed += Time.deltaTime;
                 yield return null;
             }
-            m_SpeedMultiplyer = end;
+
+            m_SpeedMultiplier = end;
         }
 
         public void SpeedBoost()
         {
             AssertPlaying();
             StopCoroutine("LerpSpeed"); // Stop any ongoing LerpSpeed coroutine
-            StartCoroutine(LerpSpeed(m_SpeedMultiplyer, 2.5f, 0.2f)); // Lerp to 2.5
+            StartCoroutine(LerpSpeed(m_SpeedMultiplier, 2.5f, 0.2f)); // Lerp to 2.5
             StartCoroutine(DelayedLerpBack());
         }
 
         private IEnumerator DelayedLerpBack()
         {
             yield return new WaitForSeconds(2f); // Wait for 2 seconds
-            StartCoroutine(LerpSpeed(m_SpeedMultiplyer, 1f, 0.2f)); // Then lerp back to 1
+
+            StartCoroutine(LerpSpeed(m_SpeedMultiplier, 1f, 0.2f)); // Then lerp back to 1
         }
 
         public void DecrementSpeed()
