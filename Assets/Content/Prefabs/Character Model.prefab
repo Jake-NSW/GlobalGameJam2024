@@ -24958,7 +24958,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 176c5361683c8e8458f4bc4359e4468d, type: 3}
   - {fileID: 8300000, guid: bf012722f540ea04898896267e62b8c8, type: 3}
   - {fileID: 8300000, guid: 97379f54239cdf244b01a8da3d853142, type: 3}
-  fartIntervals: {x: 1, y: 2}
+  fartIntervals: {x: 0.5, y: 1}
   audioSource: {fileID: 4856662844965427715}
 --- !u!82 &4856662844965427715
 AudioSource:

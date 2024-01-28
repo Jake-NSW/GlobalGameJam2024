@@ -182,7 +182,6 @@ public class PooStream : MonoBehaviour
 
     private void UpdatePooSound(AudioSource audioSource)
     {
-        Debug.Log("Updating poo sound");
         if (PooViolence <= 0)
         {
             audioSource.Stop();
