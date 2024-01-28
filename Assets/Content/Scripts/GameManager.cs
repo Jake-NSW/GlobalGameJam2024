@@ -107,8 +107,11 @@ namespace Jam
 
         private IEnumerator LoadSceneWithTransition(int index)
         {
-            MusicManager.Instance.FadeOutMusic();
-            
+            if (SceneManager.GetActiveScene().name != "Cinematic4")
+            {
+                MusicManager.Instance.FadeOutMusic();
+            }
+
             yield return m_Transition.ShowTransition();
 
 

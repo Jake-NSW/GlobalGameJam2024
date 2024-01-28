@@ -64,7 +64,7 @@ public class MusicManager : MonoBehaviour
             case "Level3":
                 PlayMusic(Level3Song);
                 break;
-            case "EndSceneName":
+            case "Cinematic4":
                 PlayMusic(EndCinematicSong);
                 break;
         }

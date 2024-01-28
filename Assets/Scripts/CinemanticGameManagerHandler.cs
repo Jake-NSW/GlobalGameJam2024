@@ -12,13 +12,6 @@ public class CinematicGameManagerHandler : MonoBehaviour
 
         called = true;
         
-        if (SceneManager.GetActiveScene().name == "Cinematic4")
-        {
-            GameManager.Instance.LoadCredits();
-        }
-        else
-        {
-            GameManager.Instance.LoadNextLevel();
-        }
+        GameManager.Instance.LoadNextLevel();
     }
 }
