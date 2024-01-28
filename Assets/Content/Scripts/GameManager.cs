@@ -53,6 +53,9 @@ namespace Jam
         {
             PointsUpdateLoop();
             TimerUpdateLoop();
+
+            Cursor.lockState = IsPlaying ? CursorLockMode.Locked : CursorLockMode.None;
+            Cursor.visible = !IsPlaying;
         }
 
         // Scene
