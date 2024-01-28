@@ -109,6 +109,9 @@ namespace Jam
                 int index = Random.Range(0, m_objects.Length);
                 GameObject item = Instantiate(m_objects[index]);
                 item.SetActive(true);
+                
+                item.layer = LayerMask.NameToLayer("Pickup");
+                item.AddComponent<DestoryStackedColliders>();
 
                 // Use the cached Z position
                 item.transform.position = new Vector3(transform.position.x,selectedHeight ,transform.position.z) + new Vector3(0, 0, zPosition); 
@@ -117,7 +120,7 @@ namespace Jam
                 var movingItem = item.AddComponent<MovingItem>();
                 var pickup = item.AddComponent<Pickup>();
                 pickup.Type = m_pickupType;
-                item.layer = LayerMask.NameToLayer("Pickup");
+                
                 
                 var disablecurvedWorld = item.AddComponent<DisableCurvedWorld>();
                 disablecurvedWorld.curvedWorldController = m_curvedWorldController;
