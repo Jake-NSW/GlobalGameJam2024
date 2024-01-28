@@ -233,6 +233,7 @@ namespace Jam
                 PickupType.Food => m_PointsPerFood,
                 PickupType.ToiletPaper => m_PointsPerToiletPaper,
                 PickupType.Barrier => m_PointsPerBarrier,
+                PickupType.SpeedBoost => m_PointsPerFood,
                 _ => throw new ArgumentOutOfRangeException(nameof(type), type, null)
             };
 
@@ -281,12 +282,31 @@ namespace Jam
             m_Speed = Mathf.Clamp(m_Speed + m_IncrementSpeed, m_MinSpeed, m_MaxSpeed);
         }
         
-        public async void SpeedBoost()
+        // Coroutine for lerping the speed multiplier
+        private IEnumerator LerpSpeed(float start, float end, float duration)
+        {
+            float elapsed = 0;
+            while (elapsed < duration)
+            {
+                m_SpeedMultiplyer = Mathf.Lerp(start, end, elapsed / duration);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+            m_SpeedMultiplyer = end;
+        }
+
+        public void SpeedBoost()
         {
             AssertPlaying();
-            m_SpeedMultiplyer = 1.5f;
-            await Task.Delay(TimeSpan.FromSeconds(0.2f));
-            m_SpeedMultiplyer = 1;
+            StopCoroutine("LerpSpeed"); // Stop any ongoing LerpSpeed coroutine
+            StartCoroutine(LerpSpeed(m_SpeedMultiplyer, 2.5f, 0.2f)); // Lerp to 2.5
+            StartCoroutine(DelayedLerpBack());
+        }
+
+        private IEnumerator DelayedLerpBack()
+        {
+            yield return new WaitForSeconds(2f); // Wait for 2 seconds
+            StartCoroutine(LerpSpeed(m_SpeedMultiplyer, 1f, 0.2f)); // Then lerp back to 1
         }
 
         public void DecrementSpeed()
