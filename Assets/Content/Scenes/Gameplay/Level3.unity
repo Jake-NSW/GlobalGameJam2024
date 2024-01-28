@@ -153,10 +153,35 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4325435512006030227, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325435512006030227, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325435512006030227, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4830960817133555857, guid: bf906904ba1530644a6f9f9e771a627f,
         type: 3}
       propertyPath: <IsPlaying>k__BackingField
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4856187442206452705, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4856187442206452705, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5556169635081217839, guid: bf906904ba1530644a6f9f9e771a627f,
         type: 3}
@@ -3260,7 +3285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &735539896
 Transform:
   m_ObjectHideFlags: 0
@@ -9384,6 +9409,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1218092147514012935, guid: 208bf5d7ea90887429fa019effc7fd36,
+        type: 3}
+      propertyPath: <PooColor>k__BackingField.b
+      value: 0.64564466
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218092147514012935, guid: 208bf5d7ea90887429fa019effc7fd36,
+        type: 3}
+      propertyPath: <PooColor>k__BackingField.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218092147514012935, guid: 208bf5d7ea90887429fa019effc7fd36,
+        type: 3}
+      propertyPath: <PooColor>k__BackingField.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2435448078238684461, guid: 208bf5d7ea90887429fa019effc7fd36,
         type: 3}
       propertyPath: m_Ground
@@ -9917,7 +9957,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2000234794
 Transform:
   m_ObjectHideFlags: 0
