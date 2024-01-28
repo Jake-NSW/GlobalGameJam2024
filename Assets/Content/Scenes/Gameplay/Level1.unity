@@ -226,6 +226,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2386135491664672324, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2386135491664672324, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4830960817133555857, guid: bf906904ba1530644a6f9f9e771a627f,
         type: 3}
       propertyPath: <IsPlaying>k__BackingField
@@ -279,6 +289,16 @@ PrefabInstance:
     - target: {fileID: 5556169635081217839, guid: bf906904ba1530644a6f9f9e771a627f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817216135280369101, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817216135280369101, guid: bf906904ba1530644a6f9f9e771a627f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -9466,7 +9486,7 @@ MonoBehaviour:
   m_objects:
   - {fileID: 375798922}
   m_SpawnFrequencyInSeconds: 1.5
-  m_spawnFailureRate: 0.8
+  m_spawnFailureRate: 0.5
   m_howManyToSpawnAtATime: 1
   m_autoRotateModel: 0
   StartRotation: {x: 15, y: 90, z: 5}
