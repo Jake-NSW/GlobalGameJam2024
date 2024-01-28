@@ -35,6 +35,7 @@ namespace Jam
 
         private void OnGUI()
         {
+#if UNITY_EDITOR|| DEVELOPMENT_BUILD
             // top middle
             if (!IsPlaying)
             {
@@ -45,12 +46,16 @@ namespace Jam
             GUI.Label(new Rect(Screen.width / 2 - 50, 10, 100, 20), $"Points: {Points}");
             GUI.Label(new Rect(Screen.width / 2 - 50, 30, 100, 20), $"Speed: {Speed}");
             GUI.Label(new Rect(Screen.width / 2 - 50, 50, 100, 20), $"Time: {Remaining}");
+#endif
         }
 
         private void Update()
         {
             PointsUpdateLoop();
             TimerUpdateLoop();
+
+            Cursor.lockState = IsPlaying ? CursorLockMode.Locked : CursorLockMode.None;
+            Cursor.visible = !IsPlaying;
         }
 
         // Scene
@@ -110,7 +115,7 @@ namespace Jam
 
         private IEnumerator LoadSceneWithTransition(int index)
         {
-            if(SceneManager.GetActiveScene().name != "Cinematic4")
+            if (SceneManager.GetActiveScene().name != "Cinematic4")
                 MusicManager.Instance.FadeOutMusic();
 
             yield return m_Transition.ShowTransition();
@@ -154,8 +159,8 @@ namespace Jam
             if (!IsPlaying)
                 return;
 
-            if (Remaining <= 0)
-                WinLevel();
+            // if (Remaining <= 0)
+            //     WinLevel();
         }
 
         /// <summary>
@@ -256,6 +261,7 @@ namespace Jam
         /// The speed of the game, should act as a multiplier
         /// </summary>
         public float Speed => m_Speed;
+
         public float MaxSpeed => m_MaxSpeed;
         public float MinSpeed => m_MinSpeed;
         [SerializeField] private float m_MaxSpeed = 3;
@@ -270,6 +276,13 @@ namespace Jam
         {
             AssertPlaying();
             m_Speed = Mathf.Clamp(m_Speed + m_IncrementSpeed, m_MinSpeed, m_MaxSpeed);
+        }
+        
+        public void SpeedBoost()
+        {
+            Debug.LogError("Implement Speed Boost");
+            //AssertPlaying();
+            //m_Speed = Mathf.Clamp(m_Speed + m_IncrementSpeed, m_MinSpeed, m_MaxSpeed);
         }
 
         public void DecrementSpeed()

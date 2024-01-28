@@ -36,13 +36,13 @@ public class DialogController : MonoBehaviour
         switch(SceneManager.GetActiveScene().name)
         {
             case "Level1":
-                FillDialog("Gotta get to the toilet");
+                FillDialog("I dreamed this would happen last night. Maybe I'm psychic.");
                 break;
             case "Level2":
-                FillDialog("Gotta get to the toilet");
+                FillDialog("Why do I never learn...");
                 break;
             case "Level3":
-                FillDialog("Gotta get to the toilet");
+                FillDialog("Time and space will bend to my will.      All roads lead to the golden dunny");
                 break;
         }
     }
