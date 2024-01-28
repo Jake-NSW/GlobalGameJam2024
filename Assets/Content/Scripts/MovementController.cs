@@ -9,6 +9,7 @@ namespace Jam
         /// Is the movement controller farting? 
         /// </summary>
         public bool IsFarting => m_IsFarting;
+
         public Vector3 Velocity => m_Velocity;
         public float MaxSpeed => m_MaxSpeed;
 
@@ -17,7 +18,7 @@ namespace Jam
         [SerializeField] private float m_Drag = 5;
 
         [SerializeField] private Vector2 m_Sides;
-        
+
         [SerializeField] private float m_Fart = 25;
 
         [SerializeField] private float m_FartRegeneration;
@@ -154,6 +155,7 @@ namespace Jam
         private void LateUpdate()
         {
             transform.LookAt(transform.position + (m_Velocity / 4) + Forward * 4);
+            GameUI.Instance.FartPower = m_FartCapacity / m_MaxFartCapacity;
         }
     }
 }
