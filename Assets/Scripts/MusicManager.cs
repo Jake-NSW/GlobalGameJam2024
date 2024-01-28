@@ -70,7 +70,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    public void FadeOutMusic(float fadeTime = 0.2f) // Default fade out time is 2 seconds
+    public void FadeOutMusic(float fadeTime = 0.18f) // Default fade out time is 2 seconds
     {
         // Don't Fade out the last cinematic song. Keep it going for the credits
         if (SceneManager.GetActiveScene().name == "EndSceneName")
@@ -128,7 +128,7 @@ public class MusicManager : MonoBehaviour
 
         m_audio.clip = clip;
         m_audio.Play();
-        StartCoroutine(FadeIn(m_audio, 0.2f)); // 2 seconds fade in
+        StartCoroutine(FadeIn(m_audio, 0.18f)); // 2 seconds fade in
     }
 
     private IEnumerator FadeIn(AudioSource audioSource, float fadeTime)
