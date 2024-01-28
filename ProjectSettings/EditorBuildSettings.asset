@@ -9,15 +9,24 @@ EditorBuildSettings:
     path: Assets/Content/Scenes/Gameplay/MainMenu.unity
     guid: 23e43ad0776188b42930c75a3c084d53
   - enabled: 1
-    path: Assets/Content/Scenes/Gameplay/Credits.unity
-    guid: 10d412942618d6f44a0f581e88d50c31
+    path: Assets/Content/Scenes/Gameplay/Cinematic1.unity
+    guid: 6953f7368db68004cb2d0d74a48ee75b
   - enabled: 1
     path: Assets/Content/Scenes/Gameplay/Level1.unity
     guid: 05bbc89782ccb954bbe8a493713223eb
   - enabled: 1
+    path: Assets/Content/Scenes/Gameplay/Cinematic2.unity
+    guid: 19a0cbcbd2c204348951b9d7f76ed932
+  - enabled: 1
     path: Assets/Content/Scenes/Gameplay/Level2.unity
     guid: ceb69abee37c627418ac0492e1d6f28e
   - enabled: 1
+    path: Assets/Content/Scenes/Gameplay/Cinematic3.unity
+    guid: 5badfedbfc223d84eade25ea1b568891
+  - enabled: 1
     path: Assets/Content/Scenes/Gameplay/Level3.unity
     guid: 3272a776d81e615498b91cca7bace2c2
+  - enabled: 1
+    path: Assets/Content/Scenes/Gameplay/Credits.unity
+    guid: 10d412942618d6f44a0f581e88d50c31
   m_configObjects: {}
