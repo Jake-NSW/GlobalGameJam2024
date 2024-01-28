@@ -73,3 +73,5 @@ crashlytics-build.properties
 .idea/.idea.GlobalGameJam2024/.idea/workspace.xml
 .idea/.idea.GlobalGameJam2024/.idea/workspace.xml
 Source/*
+Assets/BuildReport/*
+Assets/BuildReport.meta
